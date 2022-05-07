@@ -7,25 +7,83 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		7DD0C1A8AFFBEA1A9107C270 /* Pods_iCrypto.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C411730CE5FB27866963AA41 /* Pods_iCrypto.framework */; };
 		BFA412BD2826846E00EF31A6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFA412BC2826846E00EF31A6 /* AppDelegate.swift */; };
 		BFA412BF2826846E00EF31A6 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFA412BE2826846E00EF31A6 /* SceneDelegate.swift */; };
-		BFA412C12826846E00EF31A6 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFA412C02826846E00EF31A6 /* ViewController.swift */; };
-		BFA412C42826846E00EF31A6 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BFA412C22826846E00EF31A6 /* Main.storyboard */; };
 		BFA412C72826846E00EF31A6 /* iCrypto.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = BFA412C52826846E00EF31A6 /* iCrypto.xcdatamodeld */; };
 		BFA412C92826847000EF31A6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BFA412C82826847000EF31A6 /* Assets.xcassets */; };
 		BFA412CC2826847000EF31A6 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BFA412CA2826847000EF31A6 /* LaunchScreen.storyboard */; };
+		BFA412DA2826863F00EF31A6 /* MainTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFA412D92826863F00EF31A6 /* MainTabBarController.swift */; };
+		BFA412DE2826889700EF31A6 /* WalletTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFA412DD2826889700EF31A6 /* WalletTableViewController.swift */; };
+		BFA412E02826889E00EF31A6 /* SettingsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFA412DF2826889E00EF31A6 /* SettingsTableViewController.swift */; };
+		BFA412E2282689B100EF31A6 /* UIFont+.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFA412E1282689B100EF31A6 /* UIFont+.swift */; };
+		BFA412E4282689B900EF31A6 /* UIColor+.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFA412E3282689B900EF31A6 /* UIColor+.swift */; };
+		BFA412E6282689BE00EF31A6 /* UIStackView+.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFA412E5282689BE00EF31A6 /* UIStackView+.swift */; };
+		BFA412E8282689C300EF31A6 /* UIView+.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFA412E7282689C300EF31A6 /* UIView+.swift */; };
+		BFA412F1282689CD00EF31A6 /* Altone-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = BFA412E9282689CD00EF31A6 /* Altone-SemiBold.ttf */; };
+		BFA412F2282689CD00EF31A6 /* Altone-ExtraLight.ttf in Resources */ = {isa = PBXBuildFile; fileRef = BFA412EA282689CD00EF31A6 /* Altone-ExtraLight.ttf */; };
+		BFA412F3282689CD00EF31A6 /* Altone-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = BFA412EB282689CD00EF31A6 /* Altone-Light.ttf */; };
+		BFA412F4282689CD00EF31A6 /* Altone-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = BFA412EC282689CD00EF31A6 /* Altone-Bold.ttf */; };
+		BFA412F5282689CD00EF31A6 /* Altone-Thin.ttf in Resources */ = {isa = PBXBuildFile; fileRef = BFA412ED282689CD00EF31A6 /* Altone-Thin.ttf */; };
+		BFA412F6282689CD00EF31A6 /* Altone-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = BFA412EE282689CD00EF31A6 /* Altone-Medium.ttf */; };
+		BFA412F7282689CD00EF31A6 /* Altone-ExtraBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = BFA412EF282689CD00EF31A6 /* Altone-ExtraBold.ttf */; };
+		BFA412F8282689CD00EF31A6 /* Altone-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = BFA412F0282689CD00EF31A6 /* Altone-Regular.ttf */; };
+		BFA412FA28268B7100EF31A6 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFA412F928268B7100EF31A6 /* HomeViewController.swift */; };
+		BFA412FC28268BE700EF31A6 /* NewsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFA412FB28268BE700EF31A6 /* NewsTableViewController.swift */; };
+		BFA412FF28268C7F00EF31A6 /* NewsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFA412FE28268C7F00EF31A6 /* NewsTableViewCell.swift */; };
+		BFA41302282696CD00EF31A6 /* NetworkingManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFA41301282696CD00EF31A6 /* NetworkingManager.swift */; };
+		BFA41304282696F300EF31A6 /* NewsStory.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFA41303282696F300EF31A6 /* NewsStory.swift */; };
+		BFA4130628269A1F00EF31A6 /* String+.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFA4130528269A1F00EF31A6 /* String+.swift */; };
+		BFA4130828269A3400EF31A6 /* DateFormatter+.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFA4130728269A3400EF31A6 /* DateFormatter+.swift */; };
+		BFA4130B2826A83100EF31A6 /* CoinTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFA4130A2826A83100EF31A6 /* CoinTableViewCell.swift */; };
+		BFA4130D2826B79700EF31A6 /* CoinModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFA4130C2826B79700EF31A6 /* CoinModel.swift */; };
+		BFA4130F2826BC0A00EF31A6 /* Double+.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFA4130E2826BC0A00EF31A6 /* Double+.swift */; };
+		BFA413112826C13B00EF31A6 /* StockChartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFA413102826C13B00EF31A6 /* StockChartView.swift */; };
+		BFA41316282726BE00EF31A6 /* TableHeaderStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFA41313282726BE00EF31A6 /* TableHeaderStackView.swift */; };
+		BFA41317282726BE00EF31A6 /* TagCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFA41314282726BE00EF31A6 /* TagCollectionViewCell.swift */; };
+		BFA41318282726BE00EF31A6 /* WelcomeStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFA41315282726BE00EF31A6 /* WelcomeStackView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		A3F1166BAD6C7B9ED6952D34 /* Pods-iCrypto.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iCrypto.debug.xcconfig"; path = "Target Support Files/Pods-iCrypto/Pods-iCrypto.debug.xcconfig"; sourceTree = "<group>"; };
 		BFA412B92826846E00EF31A6 /* iCrypto.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iCrypto.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BFA412BC2826846E00EF31A6 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		BFA412BE2826846E00EF31A6 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		BFA412C02826846E00EF31A6 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		BFA412C32826846E00EF31A6 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		BFA412C62826846E00EF31A6 /* iCrypto.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = iCrypto.xcdatamodel; sourceTree = "<group>"; };
 		BFA412C82826847000EF31A6 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		BFA412CB2826847000EF31A6 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		BFA412CD2826847000EF31A6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		BFA412D92826863F00EF31A6 /* MainTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarController.swift; sourceTree = "<group>"; };
+		BFA412DD2826889700EF31A6 /* WalletTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalletTableViewController.swift; sourceTree = "<group>"; };
+		BFA412DF2826889E00EF31A6 /* SettingsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsTableViewController.swift; sourceTree = "<group>"; };
+		BFA412E1282689B100EF31A6 /* UIFont+.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIFont+.swift"; sourceTree = "<group>"; };
+		BFA412E3282689B900EF31A6 /* UIColor+.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIColor+.swift"; sourceTree = "<group>"; };
+		BFA412E5282689BE00EF31A6 /* UIStackView+.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIStackView+.swift"; sourceTree = "<group>"; };
+		BFA412E7282689C300EF31A6 /* UIView+.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+.swift"; sourceTree = "<group>"; };
+		BFA412E9282689CD00EF31A6 /* Altone-SemiBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Altone-SemiBold.ttf"; sourceTree = "<group>"; };
+		BFA412EA282689CD00EF31A6 /* Altone-ExtraLight.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Altone-ExtraLight.ttf"; sourceTree = "<group>"; };
+		BFA412EB282689CD00EF31A6 /* Altone-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Altone-Light.ttf"; sourceTree = "<group>"; };
+		BFA412EC282689CD00EF31A6 /* Altone-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Altone-Bold.ttf"; sourceTree = "<group>"; };
+		BFA412ED282689CD00EF31A6 /* Altone-Thin.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Altone-Thin.ttf"; sourceTree = "<group>"; };
+		BFA412EE282689CD00EF31A6 /* Altone-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Altone-Medium.ttf"; sourceTree = "<group>"; };
+		BFA412EF282689CD00EF31A6 /* Altone-ExtraBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Altone-ExtraBold.ttf"; sourceTree = "<group>"; };
+		BFA412F0282689CD00EF31A6 /* Altone-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Altone-Regular.ttf"; sourceTree = "<group>"; };
+		BFA412F928268B7100EF31A6 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
+		BFA412FB28268BE700EF31A6 /* NewsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsTableViewController.swift; sourceTree = "<group>"; };
+		BFA412FE28268C7F00EF31A6 /* NewsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsTableViewCell.swift; sourceTree = "<group>"; };
+		BFA41301282696CD00EF31A6 /* NetworkingManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkingManager.swift; sourceTree = "<group>"; };
+		BFA41303282696F300EF31A6 /* NewsStory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewsStory.swift; sourceTree = "<group>"; };
+		BFA4130528269A1F00EF31A6 /* String+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+.swift"; sourceTree = "<group>"; };
+		BFA4130728269A3400EF31A6 /* DateFormatter+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DateFormatter+.swift"; sourceTree = "<group>"; };
+		BFA4130A2826A83100EF31A6 /* CoinTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoinTableViewCell.swift; sourceTree = "<group>"; };
+		BFA4130C2826B79700EF31A6 /* CoinModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoinModel.swift; sourceTree = "<group>"; };
+		BFA4130E2826BC0A00EF31A6 /* Double+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Double+.swift"; sourceTree = "<group>"; };
+		BFA413102826C13B00EF31A6 /* StockChartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StockChartView.swift; sourceTree = "<group>"; };
+		BFA41313282726BE00EF31A6 /* TableHeaderStackView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableHeaderStackView.swift; sourceTree = "<group>"; };
+		BFA41314282726BE00EF31A6 /* TagCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TagCollectionViewCell.swift; sourceTree = "<group>"; };
+		BFA41315282726BE00EF31A6 /* WelcomeStackView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WelcomeStackView.swift; sourceTree = "<group>"; };
+		C411730CE5FB27866963AA41 /* Pods_iCrypto.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_iCrypto.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		FF60742A26BDFD1679926BCA /* Pods-iCrypto.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iCrypto.release.xcconfig"; path = "Target Support Files/Pods-iCrypto/Pods-iCrypto.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -33,17 +91,28 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7DD0C1A8AFFBEA1A9107C270 /* Pods_iCrypto.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		2F66CCD525540884176B93C4 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				C411730CE5FB27866963AA41 /* Pods_iCrypto.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		BFA412B02826846E00EF31A6 = {
 			isa = PBXGroup;
 			children = (
 				BFA412BB2826846E00EF31A6 /* iCrypto */,
 				BFA412BA2826846E00EF31A6 /* Products */,
+				E5D9FDF651A9A5604779AB73 /* Pods */,
+				2F66CCD525540884176B93C4 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -58,16 +127,124 @@
 		BFA412BB2826846E00EF31A6 /* iCrypto */ = {
 			isa = PBXGroup;
 			children = (
+				BFA41300282696C100EF31A6 /* Managers */,
+				BFA412D8282685E200EF31A6 /* Enums */,
+				BFA412D7282685DE00EF31A6 /* Font */,
+				BFA412D6282685D800EF31A6 /* Extensions */,
+				BFA412D5282685C700EF31A6 /* Models */,
+				BFA412D4282685C600EF31A6 /* Views */,
+				BFA412D3282685C500EF31A6 /* Controllers */,
 				BFA412BC2826846E00EF31A6 /* AppDelegate.swift */,
 				BFA412BE2826846E00EF31A6 /* SceneDelegate.swift */,
-				BFA412C02826846E00EF31A6 /* ViewController.swift */,
-				BFA412C22826846E00EF31A6 /* Main.storyboard */,
 				BFA412C82826847000EF31A6 /* Assets.xcassets */,
 				BFA412CA2826847000EF31A6 /* LaunchScreen.storyboard */,
 				BFA412CD2826847000EF31A6 /* Info.plist */,
 				BFA412C52826846E00EF31A6 /* iCrypto.xcdatamodeld */,
 			);
 			path = iCrypto;
+			sourceTree = "<group>";
+		};
+		BFA412D3282685C500EF31A6 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				BFA412D92826863F00EF31A6 /* MainTabBarController.swift */,
+				BFA412F928268B7100EF31A6 /* HomeViewController.swift */,
+				BFA412DD2826889700EF31A6 /* WalletTableViewController.swift */,
+				BFA412DF2826889E00EF31A6 /* SettingsTableViewController.swift */,
+				BFA412FB28268BE700EF31A6 /* NewsTableViewController.swift */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		BFA412D4282685C600EF31A6 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				BFA41312282726BE00EF31A6 /* HeaderSection */,
+				BFA412FD28268C7100EF31A6 /* Cells */,
+				BFA413102826C13B00EF31A6 /* StockChartView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		BFA412D5282685C700EF31A6 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				BFA41303282696F300EF31A6 /* NewsStory.swift */,
+				BFA4130C2826B79700EF31A6 /* CoinModel.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		BFA412D6282685D800EF31A6 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				BFA412E1282689B100EF31A6 /* UIFont+.swift */,
+				BFA412E3282689B900EF31A6 /* UIColor+.swift */,
+				BFA412E5282689BE00EF31A6 /* UIStackView+.swift */,
+				BFA412E7282689C300EF31A6 /* UIView+.swift */,
+				BFA4130528269A1F00EF31A6 /* String+.swift */,
+				BFA4130728269A3400EF31A6 /* DateFormatter+.swift */,
+				BFA4130E2826BC0A00EF31A6 /* Double+.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		BFA412D7282685DE00EF31A6 /* Font */ = {
+			isa = PBXGroup;
+			children = (
+				BFA412EC282689CD00EF31A6 /* Altone-Bold.ttf */,
+				BFA412EF282689CD00EF31A6 /* Altone-ExtraBold.ttf */,
+				BFA412EA282689CD00EF31A6 /* Altone-ExtraLight.ttf */,
+				BFA412EB282689CD00EF31A6 /* Altone-Light.ttf */,
+				BFA412EE282689CD00EF31A6 /* Altone-Medium.ttf */,
+				BFA412F0282689CD00EF31A6 /* Altone-Regular.ttf */,
+				BFA412E9282689CD00EF31A6 /* Altone-SemiBold.ttf */,
+				BFA412ED282689CD00EF31A6 /* Altone-Thin.ttf */,
+			);
+			path = Font;
+			sourceTree = "<group>";
+		};
+		BFA412D8282685E200EF31A6 /* Enums */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Enums;
+			sourceTree = "<group>";
+		};
+		BFA412FD28268C7100EF31A6 /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				BFA412FE28268C7F00EF31A6 /* NewsTableViewCell.swift */,
+				BFA4130A2826A83100EF31A6 /* CoinTableViewCell.swift */,
+			);
+			path = Cells;
+			sourceTree = "<group>";
+		};
+		BFA41300282696C100EF31A6 /* Managers */ = {
+			isa = PBXGroup;
+			children = (
+				BFA41301282696CD00EF31A6 /* NetworkingManager.swift */,
+			);
+			path = Managers;
+			sourceTree = "<group>";
+		};
+		BFA41312282726BE00EF31A6 /* HeaderSection */ = {
+			isa = PBXGroup;
+			children = (
+				BFA41313282726BE00EF31A6 /* TableHeaderStackView.swift */,
+				BFA41314282726BE00EF31A6 /* TagCollectionViewCell.swift */,
+				BFA41315282726BE00EF31A6 /* WelcomeStackView.swift */,
+			);
+			path = HeaderSection;
+			sourceTree = "<group>";
+		};
+		E5D9FDF651A9A5604779AB73 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				A3F1166BAD6C7B9ED6952D34 /* Pods-iCrypto.debug.xcconfig */,
+				FF60742A26BDFD1679926BCA /* Pods-iCrypto.release.xcconfig */,
+			);
+			path = Pods;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -77,9 +254,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = BFA412D02826847000EF31A6 /* Build configuration list for PBXNativeTarget "iCrypto" */;
 			buildPhases = (
+				D8940E51C3EB6023314AAC48 /* [CP] Check Pods Manifest.lock */,
 				BFA412B52826846E00EF31A6 /* Sources */,
 				BFA412B62826846E00EF31A6 /* Frameworks */,
 				BFA412B72826846E00EF31A6 /* Resources */,
+				F09F72647821F18094E40014 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -128,37 +307,98 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BFA412F4282689CD00EF31A6 /* Altone-Bold.ttf in Resources */,
+				BFA412F3282689CD00EF31A6 /* Altone-Light.ttf in Resources */,
+				BFA412F1282689CD00EF31A6 /* Altone-SemiBold.ttf in Resources */,
+				BFA412F7282689CD00EF31A6 /* Altone-ExtraBold.ttf in Resources */,
+				BFA412F2282689CD00EF31A6 /* Altone-ExtraLight.ttf in Resources */,
+				BFA412F5282689CD00EF31A6 /* Altone-Thin.ttf in Resources */,
 				BFA412CC2826847000EF31A6 /* LaunchScreen.storyboard in Resources */,
+				BFA412F6282689CD00EF31A6 /* Altone-Medium.ttf in Resources */,
+				BFA412F8282689CD00EF31A6 /* Altone-Regular.ttf in Resources */,
 				BFA412C92826847000EF31A6 /* Assets.xcassets in Resources */,
-				BFA412C42826846E00EF31A6 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		D8940E51C3EB6023314AAC48 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-iCrypto-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		F09F72647821F18094E40014 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-iCrypto/Pods-iCrypto-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-iCrypto/Pods-iCrypto-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-iCrypto/Pods-iCrypto-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		BFA412B52826846E00EF31A6 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				BFA412C12826846E00EF31A6 /* ViewController.swift in Sources */,
+				BFA412E2282689B100EF31A6 /* UIFont+.swift in Sources */,
+				BFA412DE2826889700EF31A6 /* WalletTableViewController.swift in Sources */,
 				BFA412BD2826846E00EF31A6 /* AppDelegate.swift in Sources */,
+				BFA4130D2826B79700EF31A6 /* CoinModel.swift in Sources */,
+				BFA412DA2826863F00EF31A6 /* MainTabBarController.swift in Sources */,
+				BFA412FF28268C7F00EF31A6 /* NewsTableViewCell.swift in Sources */,
+				BFA41317282726BE00EF31A6 /* TagCollectionViewCell.swift in Sources */,
 				BFA412C72826846E00EF31A6 /* iCrypto.xcdatamodeld in Sources */,
+				BFA4130B2826A83100EF31A6 /* CoinTableViewCell.swift in Sources */,
+				BFA4130828269A3400EF31A6 /* DateFormatter+.swift in Sources */,
+				BFA412E6282689BE00EF31A6 /* UIStackView+.swift in Sources */,
+				BFA41304282696F300EF31A6 /* NewsStory.swift in Sources */,
+				BFA41316282726BE00EF31A6 /* TableHeaderStackView.swift in Sources */,
 				BFA412BF2826846E00EF31A6 /* SceneDelegate.swift in Sources */,
+				BFA41318282726BE00EF31A6 /* WelcomeStackView.swift in Sources */,
+				BFA412FA28268B7100EF31A6 /* HomeViewController.swift in Sources */,
+				BFA4130628269A1F00EF31A6 /* String+.swift in Sources */,
+				BFA4130F2826BC0A00EF31A6 /* Double+.swift in Sources */,
+				BFA412FC28268BE700EF31A6 /* NewsTableViewController.swift in Sources */,
+				BFA412E8282689C300EF31A6 /* UIView+.swift in Sources */,
+				BFA412E02826889E00EF31A6 /* SettingsTableViewController.swift in Sources */,
+				BFA412E4282689B900EF31A6 /* UIColor+.swift in Sources */,
+				BFA413112826C13B00EF31A6 /* StockChartView.swift in Sources */,
+				BFA41302282696CD00EF31A6 /* NetworkingManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		BFA412C22826846E00EF31A6 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				BFA412C32826846E00EF31A6 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		BFA412CA2826847000EF31A6 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -286,6 +526,7 @@
 		};
 		BFA412D12826847000EF31A6 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = A3F1166BAD6C7B9ED6952D34 /* Pods-iCrypto.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -295,9 +536,9 @@
 				INFOPLIST_FILE = iCrypto/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -313,6 +554,7 @@
 		};
 		BFA412D22826847000EF31A6 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = FF60742A26BDFD1679926BCA /* Pods-iCrypto.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -322,9 +564,9 @@
 				INFOPLIST_FILE = iCrypto/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
