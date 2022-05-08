@@ -40,8 +40,13 @@
 		BFA4130F2826BC0A00EF31A6 /* Double+.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFA4130E2826BC0A00EF31A6 /* Double+.swift */; };
 		BFA413112826C13B00EF31A6 /* StockChartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFA413102826C13B00EF31A6 /* StockChartView.swift */; };
 		BFA41316282726BE00EF31A6 /* TableHeaderStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFA41313282726BE00EF31A6 /* TableHeaderStackView.swift */; };
-		BFA41317282726BE00EF31A6 /* TagCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFA41314282726BE00EF31A6 /* TagCollectionViewCell.swift */; };
+		BFA41317282726BE00EF31A6 /* InvestmentsCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFA41314282726BE00EF31A6 /* InvestmentsCollectionViewCell.swift */; };
 		BFA41318282726BE00EF31A6 /* WelcomeStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFA41315282726BE00EF31A6 /* WelcomeStackView.swift */; };
+		BFA4131A2827FA3900EF31A6 /* UILabel+.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFA413192827FA3900EF31A6 /* UILabel+.swift */; };
+		BFA4131C282803F300EF31A6 /* AddInvestmentsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFA4131B282803F300EF31A6 /* AddInvestmentsViewController.swift */; };
+		BFA4131F282804D300EF31A6 /* Transfers.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFA4131E282804D300EF31A6 /* Transfers.swift */; };
+		BFA413252828153D00EF31A6 /* InvestTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFA413242828153D00EF31A6 /* InvestTextField.swift */; };
+		BFA4132728281E5700EF31A6 /* UITextField+.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFA4132628281E5700EF31A6 /* UITextField+.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -80,8 +85,13 @@
 		BFA4130E2826BC0A00EF31A6 /* Double+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Double+.swift"; sourceTree = "<group>"; };
 		BFA413102826C13B00EF31A6 /* StockChartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StockChartView.swift; sourceTree = "<group>"; };
 		BFA41313282726BE00EF31A6 /* TableHeaderStackView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableHeaderStackView.swift; sourceTree = "<group>"; };
-		BFA41314282726BE00EF31A6 /* TagCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TagCollectionViewCell.swift; sourceTree = "<group>"; };
+		BFA41314282726BE00EF31A6 /* InvestmentsCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InvestmentsCollectionViewCell.swift; sourceTree = "<group>"; };
 		BFA41315282726BE00EF31A6 /* WelcomeStackView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WelcomeStackView.swift; sourceTree = "<group>"; };
+		BFA413192827FA3900EF31A6 /* UILabel+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UILabel+.swift"; sourceTree = "<group>"; };
+		BFA4131B282803F300EF31A6 /* AddInvestmentsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddInvestmentsViewController.swift; sourceTree = "<group>"; };
+		BFA4131E282804D300EF31A6 /* Transfers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Transfers.swift; sourceTree = "<group>"; };
+		BFA413242828153D00EF31A6 /* InvestTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InvestTextField.swift; sourceTree = "<group>"; };
+		BFA4132628281E5700EF31A6 /* UITextField+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextField+.swift"; sourceTree = "<group>"; };
 		C411730CE5FB27866963AA41 /* Pods_iCrypto.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_iCrypto.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		FF60742A26BDFD1679926BCA /* Pods-iCrypto.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iCrypto.release.xcconfig"; path = "Target Support Files/Pods-iCrypto/Pods-iCrypto.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -127,6 +137,7 @@
 		BFA412BB2826846E00EF31A6 /* iCrypto */ = {
 			isa = PBXGroup;
 			children = (
+				BFA4131D282804C300EF31A6 /* Protocol */,
 				BFA41300282696C100EF31A6 /* Managers */,
 				BFA412D8282685E200EF31A6 /* Enums */,
 				BFA412D7282685DE00EF31A6 /* Font */,
@@ -152,6 +163,7 @@
 				BFA412DD2826889700EF31A6 /* WalletTableViewController.swift */,
 				BFA412DF2826889E00EF31A6 /* SettingsTableViewController.swift */,
 				BFA412FB28268BE700EF31A6 /* NewsTableViewController.swift */,
+				BFA4131B282803F300EF31A6 /* AddInvestmentsViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -159,9 +171,10 @@
 		BFA412D4282685C600EF31A6 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				BFA41321282813EF00EF31A6 /* CustomTextField */,
+				BFA41320282813E700EF31A6 /* Chart */,
 				BFA41312282726BE00EF31A6 /* HeaderSection */,
 				BFA412FD28268C7100EF31A6 /* Cells */,
-				BFA413102826C13B00EF31A6 /* StockChartView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -185,6 +198,8 @@
 				BFA4130528269A1F00EF31A6 /* String+.swift */,
 				BFA4130728269A3400EF31A6 /* DateFormatter+.swift */,
 				BFA4130E2826BC0A00EF31A6 /* Double+.swift */,
+				BFA413192827FA3900EF31A6 /* UILabel+.swift */,
+				BFA4132628281E5700EF31A6 /* UITextField+.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -232,10 +247,34 @@
 			isa = PBXGroup;
 			children = (
 				BFA41313282726BE00EF31A6 /* TableHeaderStackView.swift */,
-				BFA41314282726BE00EF31A6 /* TagCollectionViewCell.swift */,
+				BFA41314282726BE00EF31A6 /* InvestmentsCollectionViewCell.swift */,
 				BFA41315282726BE00EF31A6 /* WelcomeStackView.swift */,
 			);
 			path = HeaderSection;
+			sourceTree = "<group>";
+		};
+		BFA4131D282804C300EF31A6 /* Protocol */ = {
+			isa = PBXGroup;
+			children = (
+				BFA4131E282804D300EF31A6 /* Transfers.swift */,
+			);
+			path = Protocol;
+			sourceTree = "<group>";
+		};
+		BFA41320282813E700EF31A6 /* Chart */ = {
+			isa = PBXGroup;
+			children = (
+				BFA413102826C13B00EF31A6 /* StockChartView.swift */,
+			);
+			path = Chart;
+			sourceTree = "<group>";
+		};
+		BFA41321282813EF00EF31A6 /* CustomTextField */ = {
+			isa = PBXGroup;
+			children = (
+				BFA413242828153D00EF31A6 /* InvestTextField.swift */,
+			);
+			path = CustomTextField;
 			sourceTree = "<group>";
 		};
 		E5D9FDF651A9A5604779AB73 /* Pods */ = {
@@ -375,17 +414,22 @@
 				BFA4130D2826B79700EF31A6 /* CoinModel.swift in Sources */,
 				BFA412DA2826863F00EF31A6 /* MainTabBarController.swift in Sources */,
 				BFA412FF28268C7F00EF31A6 /* NewsTableViewCell.swift in Sources */,
-				BFA41317282726BE00EF31A6 /* TagCollectionViewCell.swift in Sources */,
+				BFA41317282726BE00EF31A6 /* InvestmentsCollectionViewCell.swift in Sources */,
 				BFA412C72826846E00EF31A6 /* iCrypto.xcdatamodeld in Sources */,
+				BFA4132728281E5700EF31A6 /* UITextField+.swift in Sources */,
 				BFA4130B2826A83100EF31A6 /* CoinTableViewCell.swift in Sources */,
+				BFA4131F282804D300EF31A6 /* Transfers.swift in Sources */,
 				BFA4130828269A3400EF31A6 /* DateFormatter+.swift in Sources */,
 				BFA412E6282689BE00EF31A6 /* UIStackView+.swift in Sources */,
 				BFA41304282696F300EF31A6 /* NewsStory.swift in Sources */,
 				BFA41316282726BE00EF31A6 /* TableHeaderStackView.swift in Sources */,
+				BFA413252828153D00EF31A6 /* InvestTextField.swift in Sources */,
 				BFA412BF2826846E00EF31A6 /* SceneDelegate.swift in Sources */,
 				BFA41318282726BE00EF31A6 /* WelcomeStackView.swift in Sources */,
+				BFA4131C282803F300EF31A6 /* AddInvestmentsViewController.swift in Sources */,
 				BFA412FA28268B7100EF31A6 /* HomeViewController.swift in Sources */,
 				BFA4130628269A1F00EF31A6 /* String+.swift in Sources */,
+				BFA4131A2827FA3900EF31A6 /* UILabel+.swift in Sources */,
 				BFA4130F2826BC0A00EF31A6 /* Double+.swift in Sources */,
 				BFA412FC28268BE700EF31A6 /* NewsTableViewController.swift in Sources */,
 				BFA412E8282689C300EF31A6 /* UIView+.swift in Sources */,

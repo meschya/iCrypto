@@ -87,7 +87,6 @@ final class CoinTableViewCell: UITableViewCell {
     
     private func addCoinImageViewConstraints() {
         coinImageView.translatesAutoresizingMaskIntoConstraints = false
-//        coinImageView.widthAnchor.constraint(equalTo: coinStackView.widthAnchor, multiplier: 0.07).isActive = true
         coinImageView.widthAnchor.constraint(equalToConstant: 30).isActive = true
         coinImageView.heightAnchor.constraint(equalToConstant: 30).isActive = true
     }

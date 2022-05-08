@@ -16,6 +16,7 @@ final class WelcomeStackView: UIStackView {
     // MARK: Public
     
     let tableHeaderStackView: TableHeaderStackView = .init()
+    weak var delegate: TransferActionsBetweenVCDelegate?
     
     // MARK: Private
     
@@ -23,6 +24,9 @@ final class WelcomeStackView: UIStackView {
     private let welcomeLabel: UILabel = .init()
     private let personImageView: UIImageView = .init()
     private let countNotesLabel: UILabel = .init()
+    private let investmentsStackView: UIStackView = .init()
+    private let investmentsLabel: UILabel = .init()
+    private let investmentsImageView: UIImageView = .init()
     private let tagCollectionView: UICollectionView = .init(frame: CGRect.zero, collectionViewLayout: UICollectionViewFlowLayout())
     private let layout = UICollectionViewFlowLayout()
     
@@ -48,6 +52,7 @@ final class WelcomeStackView: UIStackView {
             self.addPersonImageSetups()
         }
     }
+
     // MARK: - Constraints
     
     // MARK: Private
@@ -57,6 +62,7 @@ final class WelcomeStackView: UIStackView {
         addTagCollectionViewConstraints()
         addWelcomeStackViewConstraint()
         addTableHeaderStackViewConstraints()
+        addInvestmentsImageViewConstraints()
     }
     
     private func addPersonImageViewConstraints() {
@@ -76,13 +82,20 @@ final class WelcomeStackView: UIStackView {
         tagCollectionView.translatesAutoresizingMaskIntoConstraints = false
         tagCollectionView.leadingAnchor.constraint(equalTo: leadingAnchor).isActive = true
         tagCollectionView.trailingAnchor.constraint(equalTo: trailingAnchor).isActive = true
-        tagCollectionView.heightAnchor.constraint(equalToConstant: 50).isActive = true
+        tagCollectionView.heightAnchor.constraint(equalToConstant: 200).isActive = true
     }
     
     private func addTableHeaderStackViewConstraints() {
         tableHeaderStackView.translatesAutoresizingMaskIntoConstraints = false
         tableHeaderStackView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 15).isActive = true
         tableHeaderStackView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -15).isActive = true
+    }
+    
+    private func addInvestmentsImageViewConstraints() {
+        investmentsImageView.translatesAutoresizingMaskIntoConstraints = false
+        investmentsImageView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -20).isActive = true
+        investmentsImageView.widthAnchor.constraint(equalToConstant: 30).isActive = true
+        investmentsImageView.heightAnchor.constraint(equalToConstant: 30).isActive = true
     }
     
     // MARK: - API
@@ -105,14 +118,20 @@ final class WelcomeStackView: UIStackView {
         welcomeStackView.addArrangedSubviews(welcomeLabel,
                                              personImageView)
         addArrangedSubviews(countNotesLabel,
+                            investmentsStackView,
                             tagCollectionView,
                             tableHeaderStackView)
+        investmentsStackView.addArrangedSubviews(investmentsLabel,
+                                                 investmentsImageView)
     }
     
     private func addSetups() {
         addStackViewSetups()
         addWelcomeLabelSetups()
         addWelcomeStackViewSetups()
+        addInvestmentsStackViewSetups()
+        addInvestmentsLabelSetups()
+        addInvestmentsImageViewSetups()
         addCountNotesLabelSetups()
         addTagCollectionViewSetupsUI()
         tagCollectionViewSetup()
@@ -130,6 +149,25 @@ final class WelcomeStackView: UIStackView {
         welcomeStackView.axis = .horizontal
         welcomeStackView.alignment = .fill
         welcomeStackView.distribution = .fillProportionally
+    }
+    
+    private func addInvestmentsStackViewSetups() {
+        investmentsStackView.axis = .horizontal
+        investmentsStackView.alignment = .fill
+        investmentsStackView.distribution = .fillProportionally
+    }
+    
+    private func addInvestmentsImageViewSetups() {
+        let tap = UITapGestureRecognizer(target: self, action: #selector(addInsvestmentsClick))
+        investmentsImageView.isUserInteractionEnabled = true
+        investmentsImageView.image = UIImage(systemName: "plus.circle.fill")
+        investmentsImageView.tintColor = .theme.accent
+        investmentsImageView.addGestureRecognizer(tap)
+    }
+    
+    private func addInvestmentsLabelSetups() {
+        investmentsLabel.text = "My Investments"
+        investmentsLabel.font = .altone(20, .medium)
     }
     
     private func addCountNotesLabelSetups() {
@@ -155,14 +193,14 @@ final class WelcomeStackView: UIStackView {
         tagCollectionView.collectionViewLayout = layout
         tagCollectionView.showsHorizontalScrollIndicator = false
         layout.scrollDirection = .horizontal
-        layout.sectionInset = UIEdgeInsets(top: 20, left: 10, bottom: 0, right: 10)
-        layout.itemSize = CGSize(width: 100, height: 60)
+        layout.sectionInset = UIEdgeInsets(top: 0, left: 10, bottom: 0, right: 10)
+        layout.itemSize = CGSize(width: 290, height: 190)
     }
     
     private func tagCollectionViewSetup() {
         tagCollectionView.delegate = self
         tagCollectionView.dataSource = self
-        tagCollectionView.register(TagCollectionViewCell.self, forCellWithReuseIdentifier: TagCollectionViewCell.identifier)
+        tagCollectionView.register(InvestmentsCollectionViewCell.self, forCellWithReuseIdentifier: InvestmentsCollectionViewCell.identifier)
     }
     
     // MARK: - Helpers
@@ -189,6 +227,15 @@ final class WelcomeStackView: UIStackView {
         firstString.append(thirdString)
         return firstString
     }
+    
+    // MARK: - Actions
+    
+    // MARK: Private
+    
+    @objc private func addInsvestmentsClick() {
+        let addInsvestmentVC = AddInvestmentsViewController()
+        delegate?.viewScreen(addInsvestmentVC)
+    }
 }
 
 extension WelcomeStackView: UICollectionViewDelegate, UICollectionViewDataSource {
@@ -197,8 +244,8 @@ extension WelcomeStackView: UICollectionViewDelegate, UICollectionViewDataSource
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        if let cell = tagCollectionView.dequeueReusableCell(withReuseIdentifier: TagCollectionViewCell.identifier, for: indexPath) as? TagCollectionViewCell {
-            cell.set(Tags.allValues[indexPath.item].rawValue)
+        if let cell = tagCollectionView.dequeueReusableCell(withReuseIdentifier: InvestmentsCollectionViewCell.identifier, for: indexPath) as? InvestmentsCollectionViewCell {
+            //cell.set(Tags.allValues[indexPath.item].rawValue)
             return cell
         }
         return UICollectionViewCell()

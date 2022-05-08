@@ -26,6 +26,16 @@ final class HomeViewController: UIViewController {
         refreshTable()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        navigationController?.setNavigationBarHidden(true, animated: animated)
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        navigationController?.setNavigationBarHidden(false, animated: animated)
+    }
+    
     // MARK: - Networking
     
     func fetchCoins() {
@@ -58,7 +68,7 @@ final class HomeViewController: UIViewController {
     }
 
     private func setUpFloatingPanel() {
-        let vc = UINavigationController(rootViewController: NewsTableViewController())
+        let vc = NewsTableViewController()
         panel.surfaceView.backgroundColor = .theme.cellColor
         panel.set(contentViewController: vc)
         panel.surfaceView.appearance.cornerRadius = 20
@@ -71,9 +81,10 @@ final class HomeViewController: UIViewController {
     // MARK: Private
     
     private func addHeaderView() {
-        headerView = WelcomeStackView(frame: CGRect(x: 0, y: 0, width: view.bounds.width, height: 240))
+        headerView = WelcomeStackView(frame: CGRect(x: 0, y: 0, width: view.bounds.width, height: 420))
        // headerView.tableHeaderStackView.delegate = self
      //   headerView.setCount(notes.count)
+        headerView.delegate = self
         cryptoTableView.tableHeaderView = headerView
     }
     
@@ -124,5 +135,11 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         print(coins[indexPath.row].symbol)
+    }
+}
+
+extension HomeViewController: TransferActionsBetweenVCDelegate {
+    func viewScreen(_ addInvestments: AddInvestmentsViewController) {
+        navigationController?.pushViewController(addInvestments, animated: true)
     }
 }

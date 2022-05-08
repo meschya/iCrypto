@@ -5,7 +5,7 @@ final class MainTabBarController: UITabBarController {
 
     // MARK: Private
 
-    private let homeTVC = HomeViewController()
+    private let homeTVC = UINavigationController(rootViewController: HomeViewController())
     private let walletTVC = WalletTableViewController()
     private let settingsTVC = SettingsTableViewController()
 

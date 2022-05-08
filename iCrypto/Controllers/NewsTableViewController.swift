@@ -35,8 +35,9 @@ final class NewsTableViewController: UITableViewController {
     private func addSubviews() {}
     
     private func addSetups() {
-        addNavigationSetups()
+        // addNavigationSetups()
         addTableViewSetups()
+        addTableHeaderView()
     }
     
     private func addNavigationSetups() {
@@ -48,6 +49,25 @@ final class NewsTableViewController: UITableViewController {
         tableView.backgroundColor = .theme.background
         tableView.register(NewsTableViewCell.self, forCellReuseIdentifier: NewsTableViewCell.identifier)
         tableView.separatorStyle = .none
+    }
+    
+    private func addTableHeaderView() {
+        let titleView = UIView(
+            frame: CGRect(
+                x: 0,
+                y: 0,
+                width: 250,
+                height: 70))
+        let label = UILabel(
+            frame: CGRect(
+                x: 10,
+                y: 0,
+                width: titleView.frame.width - 20,
+                height: titleView.frame.height))
+        titleView.addSubview(label)
+        label.text = "Bussines News"
+        label.font = .altone(30, .bold)
+        tableView.tableHeaderView = titleView
     }
     
     // MARK: - Helpers
