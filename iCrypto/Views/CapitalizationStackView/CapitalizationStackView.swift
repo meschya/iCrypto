@@ -156,7 +156,7 @@ final class CapitalizationStackView: UIStackView {
         
         let firstString = NSMutableAttributedString(string: "🏦 Market Capitalization\n", attributes: firstAttributes)
         
-        let secondString = NSAttributedString(string: "$\(price)\n", attributes: secondAttributes)
+        let secondString = NSAttributedString(string: "$ \(price)\n", attributes: secondAttributes)
         let thirdString = NSAttributedString(string: "\(change)", attributes: thirdAttributes)
         firstString.append(secondString)
         firstString.append(thirdString)
@@ -192,7 +192,7 @@ final class CapitalizationStackView: UIStackView {
         
         let firstString = NSMutableAttributedString(string: "💰 Volume\n", attributes: firstAttributes)
         
-        let secondString = NSAttributedString(string: "$\(volume)", attributes: secondAttributes)
+        let secondString = NSAttributedString(string: "$ \(volume)", attributes: secondAttributes)
         firstString.append(secondString)
         return firstString
     }

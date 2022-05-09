@@ -10,5 +10,6 @@ pod 'FloatingPanel'
 pod 'Alamofire'
 pod 'Kingfisher', '~> 7.0'
 pod 'Charts'
+pod "Confetto"
 
 end

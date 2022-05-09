@@ -1,5 +1,6 @@
-import UIKit
+import Confetto
 import Kingfisher
+import UIKit
 
 final class InvestmentsCollectionViewCell: UICollectionViewCell {
     // MARK: - Identifier
@@ -14,6 +15,7 @@ final class InvestmentsCollectionViewCell: UICollectionViewCell {
     private let investmentsStackView: UIStackView = .init()
     private let coinStackView: UIStackView = .init()
     private let coinImageView: UIImageView = .init()
+    private let confettiView: ConfettiView = .init()
     private let coinLabel: UILabel = .init()
     private let settingsImageView: UIImageView = .init()
     private let progressView: UIProgressView = .init()
@@ -50,11 +52,13 @@ final class InvestmentsCollectionViewCell: UICollectionViewCell {
     
     func set(_ symbolCoin: String, _ nameCoin: String, _ invest: Double, _ targetPrice: Double, _ change: String, _ priceCoin: Double, _ image: String, _ color: UIColor, _ buyingPrice: Double) {
         let result = (invest / buyingPrice) * priceCoin
+        let progress = Float(result) / Float(targetPrice)
         coinLabel.attributedText = modificatorForCoinLabel(symbolCoin, nameCoin)
         investmentLabel.attributedText = modificatorForInvestmentLabel(Int(invest))
         profitLabel.attributedText = modificatorForProfitLabel(Int(targetPrice), result.asNumberString(), change, color)
         coinImageView.kf.setImage(with: URL(string: image))
-        progressView.progress = Float(result)/Float(targetPrice)
+        startConffeti(Float(progress))
+        progressView.progress = progress
     }
     
     // MARK: - Constraints
@@ -138,6 +142,7 @@ final class InvestmentsCollectionViewCell: UICollectionViewCell {
     
     private func addContentViewSetups() {
         contentView.backgroundColor = .systemBackground
+        confettiView.frame = contentView.bounds
     }
     
     private func addInvestmentsViewSetups() {
@@ -191,6 +196,16 @@ final class InvestmentsCollectionViewCell: UICollectionViewCell {
     // MARK: - Helpers
     
     // MARK: Private
+    
+    private func startConffeti(_ result: Float) {
+        if result >= 1.0 {
+            contentView.addSubview(confettiView)
+            confettiView.intensity = 0.19
+            confettiView.start()
+        } else if result < 1.0 {
+            confettiView.stop()
+        }
+    }
     
     private func modificatorForCoinLabel(_ symbol: String, _ name: String) -> NSMutableAttributedString {
         let firstAttributes: [NSAttributedString.Key: Any] = [
