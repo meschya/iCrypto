@@ -8,6 +8,12 @@ final class WelcomeStackView: UIStackView, NSFetchedResultsControllerDelegate {
     
     let tableHeaderStackView: TableHeaderStackView = .init()
     weak var delegate: TransferActionsBetweenVCDelegate?
+    var invests: [Investment] = [] {
+        didSet {
+            setCount(invests.count)
+            investmentCollectionView.reloadData()
+        }
+    }
     
     // MARK: Private
     
@@ -15,12 +21,6 @@ final class WelcomeStackView: UIStackView, NSFetchedResultsControllerDelegate {
     var coins: [CoinModel] = [] {
         didSet {
             investmentCollectionView.reloadData()
-        }
-    }
-
-    private var invests: [Investment] = [] {
-        didSet {
-            self.investmentCollectionView.reloadData()
         }
     }
     
@@ -301,8 +301,8 @@ extension WelcomeStackView: UICollectionViewDelegate, UICollectionViewDataSource
     func controller(_ controller: NSFetchedResultsController<NSFetchRequestResult>, didChange anObject: Any, at indexPath: IndexPath?, for type: NSFetchedResultsChangeType, newIndexPath: IndexPath?) {
         switch type {
         case .insert:
-            if let newIndexPath = newIndexPath {
-                investmentCollectionView.insertItems(at: [newIndexPath])
+            if let indexPath = indexPath {
+                investmentCollectionView.insertItems(at: [indexPath])
             }
         case .delete:
             if let indexPath = indexPath {
@@ -315,7 +315,6 @@ extension WelcomeStackView: UICollectionViewDelegate, UICollectionViewDataSource
         default:
             investmentCollectionView.reloadData()
         }
-
         if let fetchedObjects = controller.fetchedObjects {
             invests = fetchedObjects as! [Investment]
         }
