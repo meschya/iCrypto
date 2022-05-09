@@ -48,6 +48,8 @@
 		BFA413252828153D00EF31A6 /* InvestTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFA413242828153D00EF31A6 /* InvestTextField.swift */; };
 		BFA4132728281E5700EF31A6 /* UITextField+.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFA4132628281E5700EF31A6 /* UITextField+.swift */; };
 		BFA413292828311200EF31A6 /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFA413282828311200EF31A6 /* CoreDataManager.swift */; };
+		BFA4132B282958B500EF31A6 /* CoinViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFA4132A282958B500EF31A6 /* CoinViewController.swift */; };
+		BFA4132E28299DA200EF31A6 /* CapitalizationStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFA4132D28299DA200EF31A6 /* CapitalizationStackView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -94,6 +96,8 @@
 		BFA413242828153D00EF31A6 /* InvestTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InvestTextField.swift; sourceTree = "<group>"; };
 		BFA4132628281E5700EF31A6 /* UITextField+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextField+.swift"; sourceTree = "<group>"; };
 		BFA413282828311200EF31A6 /* CoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
+		BFA4132A282958B500EF31A6 /* CoinViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoinViewController.swift; sourceTree = "<group>"; };
+		BFA4132D28299DA200EF31A6 /* CapitalizationStackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CapitalizationStackView.swift; sourceTree = "<group>"; };
 		C411730CE5FB27866963AA41 /* Pods_iCrypto.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_iCrypto.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		FF60742A26BDFD1679926BCA /* Pods-iCrypto.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iCrypto.release.xcconfig"; path = "Target Support Files/Pods-iCrypto/Pods-iCrypto.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -166,6 +170,7 @@
 				BFA412DF2826889E00EF31A6 /* SettingsTableViewController.swift */,
 				BFA412FB28268BE700EF31A6 /* NewsTableViewController.swift */,
 				BFA4131B282803F300EF31A6 /* AddInvestmentsViewController.swift */,
+				BFA4132A282958B500EF31A6 /* CoinViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -173,6 +178,7 @@
 		BFA412D4282685C600EF31A6 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				BFA4132C28299D7400EF31A6 /* CapitalizationStackView */,
 				BFA41321282813EF00EF31A6 /* CustomTextField */,
 				BFA41320282813E700EF31A6 /* Chart */,
 				BFA41312282726BE00EF31A6 /* HeaderSection */,
@@ -231,6 +237,7 @@
 		BFA412FD28268C7100EF31A6 /* Cells */ = {
 			isa = PBXGroup;
 			children = (
+				BFA41314282726BE00EF31A6 /* InvestmentsCollectionViewCell.swift */,
 				BFA412FE28268C7F00EF31A6 /* NewsTableViewCell.swift */,
 				BFA4130A2826A83100EF31A6 /* CoinTableViewCell.swift */,
 			);
@@ -250,7 +257,6 @@
 			isa = PBXGroup;
 			children = (
 				BFA41313282726BE00EF31A6 /* TableHeaderStackView.swift */,
-				BFA41314282726BE00EF31A6 /* InvestmentsCollectionViewCell.swift */,
 				BFA41315282726BE00EF31A6 /* WelcomeStackView.swift */,
 			);
 			path = HeaderSection;
@@ -278,6 +284,14 @@
 				BFA413242828153D00EF31A6 /* InvestTextField.swift */,
 			);
 			path = CustomTextField;
+			sourceTree = "<group>";
+		};
+		BFA4132C28299D7400EF31A6 /* CapitalizationStackView */ = {
+			isa = PBXGroup;
+			children = (
+				BFA4132D28299DA200EF31A6 /* CapitalizationStackView.swift */,
+			);
+			path = CapitalizationStackView;
 			sourceTree = "<group>";
 		};
 		E5D9FDF651A9A5604779AB73 /* Pods */ = {
@@ -416,7 +430,9 @@
 				BFA412BD2826846E00EF31A6 /* AppDelegate.swift in Sources */,
 				BFA4130D2826B79700EF31A6 /* CoinModel.swift in Sources */,
 				BFA412DA2826863F00EF31A6 /* MainTabBarController.swift in Sources */,
+				BFA4132E28299DA200EF31A6 /* CapitalizationStackView.swift in Sources */,
 				BFA412FF28268C7F00EF31A6 /* NewsTableViewCell.swift in Sources */,
+				BFA4132B282958B500EF31A6 /* CoinViewController.swift in Sources */,
 				BFA41317282726BE00EF31A6 /* InvestmentsCollectionViewCell.swift in Sources */,
 				BFA412C72826846E00EF31A6 /* iCrypto.xcdatamodeld in Sources */,
 				BFA4132728281E5700EF31A6 /* UITextField+.swift in Sources */,

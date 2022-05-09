@@ -45,7 +45,7 @@ final class StockCharView: UIView {
         chartView.rightAxis.enabled = viewModel.showAxis
         chartView.legend.enabled = viewModel.showLegend
         
-        let dataSet = LineChartDataSet(entries: entries, label: "1 День")
+        let dataSet = LineChartDataSet(entries: entries, label: "7 Days")
         
         dataSet.drawFilledEnabled = true
         dataSet.drawIconsEnabled = false

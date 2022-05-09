@@ -194,7 +194,6 @@ final class InvestmentsCollectionViewCell: UICollectionViewCell {
     
     private func modificatorForCoinLabel(_ symbol: String, _ name: String) -> NSMutableAttributedString {
         let firstAttributes: [NSAttributedString.Key: Any] = [
-            NSAttributedString.Key.foregroundColor: UIColor.theme.title!,
             NSAttributedString.Key.font: UIFont.altone(17, .bold)
         ]
         let secondAttributes: [NSAttributedString.Key: Any] = [

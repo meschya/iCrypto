@@ -83,8 +83,6 @@ final class HomeViewController: UIViewController {
     
     private func addHeaderView() {
         headerView = WelcomeStackView(frame: CGRect(x: 0, y: 0, width: view.bounds.width, height: 420))
-       // headerView.tableHeaderStackView.delegate = self
-     //   headerView.setCount(notes.count)
         headerView.delegate = self
         cryptoTableView.tableHeaderView = headerView
     }
@@ -135,7 +133,9 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        print(coins[indexPath.row].symbol)
+        let coinVC = CoinViewController()
+        coinVC.coin = coins[indexPath.row]
+        present(UINavigationController(rootViewController: coinVC), animated: true)
     }
 }
 

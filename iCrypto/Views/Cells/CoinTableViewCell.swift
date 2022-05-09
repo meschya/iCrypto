@@ -69,7 +69,6 @@ final class CoinTableViewCell: UITableViewCell {
         addCoinImageViewConstraints()
         addChartViewConstraints()
         addInfoStackViewConstraints()
-        //   addPriceStackViewConstraints()
     }
     
     private func addCoinStackViewConstraints() {
@@ -96,11 +95,6 @@ final class CoinTableViewCell: UITableViewCell {
         chart.widthAnchor.constraint(equalTo: coinStackView.widthAnchor, multiplier: 0.3).isActive = true
         chart.heightAnchor.constraint(equalToConstant: 50).isActive = true
     }
-    
-//    private func addPriceStackViewConstraints() {
-//        priceStackView.translatesAutoresizingMaskIntoConstraints = false
-//        priceStackView.widthAnchor.constraint(equalTo: coinStackView.widthAnchor, multiplier: 0.27).isActive = true
-//    }
     
     // MARK: - Setups
     

@@ -94,6 +94,7 @@ final class WelcomeStackView: UIStackView, NSFetchedResultsControllerDelegate {
         addWelcomeStackViewConstraint()
         addTableHeaderStackViewConstraints()
         addInvestmentsImageViewConstraints()
+        addCountNotesLabelConstraint()
     }
     
     private func addPersonImageViewConstraints() {
@@ -107,6 +108,12 @@ final class WelcomeStackView: UIStackView, NSFetchedResultsControllerDelegate {
         welcomeStackView.translatesAutoresizingMaskIntoConstraints = false
         welcomeStackView.topAnchor.constraint(equalTo: topAnchor, constant: 10).isActive = true
         welcomeStackView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 20).isActive = true
+    }
+    
+    private func addCountNotesLabelConstraint() {
+        countNotesLabel.translatesAutoresizingMaskIntoConstraints = false
+        countNotesLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 20).isActive = true
+        countNotesLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -20).isActive = true
     }
     
     private func addTagCollectionViewConstraints() {
@@ -132,11 +139,11 @@ final class WelcomeStackView: UIStackView, NSFetchedResultsControllerDelegate {
     // MARK: - API
     
     func set(_ text: String, _ image: String) {
-        welcomeLabel.text = "Добро пожаловать, \(text)!"
+        welcomeLabel.text = "Hello, \(text)!"
         personImageView.image = UIImage(named: image)
     }
     
-    func setCount(_ count: Int) {
+    private func setCount(_ count: Int) {
         countNotesLabel.attributedText = modificatorForCountNotesLabel(count)
     }
     
@@ -204,6 +211,8 @@ final class WelcomeStackView: UIStackView, NSFetchedResultsControllerDelegate {
     private func addCountNotesLabelSetups() {
         countNotesLabel.attributedText = modificatorForCountNotesLabel()
         countNotesLabel.numberOfLines = 2
+        countNotesLabel.adjustsFontSizeToFitWidth = true
+        countNotesLabel.minimumScaleFactor = 0.5
     }
     
     private func addWelcomeLabelSetups() {
