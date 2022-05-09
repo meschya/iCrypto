@@ -28,7 +28,6 @@ final class InvestmentsCollectionViewCell: UICollectionViewCell {
         addSubviews()
         addContraints()
         addSetups()
-        progressView.progress = 2000/4000
     }
     
     @available(*, unavailable)
@@ -42,7 +41,20 @@ final class InvestmentsCollectionViewCell: UICollectionViewCell {
         super.layoutSubviews()
         DispatchQueue.main.async {
             self.addCoinImageViewSetups()
+            self.profitLabel.setLineSpacing(lineSpacing: 4.0)
+            self.investmentLabel.setLineSpacing(lineSpacing: 4.0)
         }
+    }
+    
+    // MARK: - API
+    
+    func set(_ symbolCoin: String, _ nameCoin: String, _ invest: Double, _ targetPrice: Double, _ change: String, _ priceCoin: Double, _ image: String, _ color: UIColor, _ buyingPrice: Double) {
+        let result = (invest / buyingPrice) * priceCoin
+        coinLabel.attributedText = modificatorForCoinLabel(symbolCoin, nameCoin)
+        investmentLabel.attributedText = modificatorForInvestmentLabel(Int(invest))
+        profitLabel.attributedText = modificatorForProfitLabel(Int(targetPrice), result.asNumberString(), change, color)
+        coinImageView.kf.setImage(with: URL(string: image))
+        progressView.progress = Float(result)/Float(targetPrice)
     }
     
     // MARK: - Constraints
@@ -154,14 +166,12 @@ final class InvestmentsCollectionViewCell: UICollectionViewCell {
     }
     
     private func addCoinImageViewSetups() {
-        coinImageView.image = UIImage(named: "6")
         coinImageView.layer.cornerRadius = coinImageView.frame.size.width / 2
         coinImageView.clipsToBounds = true
         coinImageView.contentMode = .scaleAspectFill
     }
     
     private func addCoinLabelSetups() {
-        coinLabel.attributedText = modificatorForCoinLabel()
         coinLabel.numberOfLines = 2
     }
     
@@ -171,22 +181,18 @@ final class InvestmentsCollectionViewCell: UICollectionViewCell {
     }
     
     private func addInvestmentLabelSetups() {
-        investmentLabel.attributedText = modificatorForInvestmentLabel()
         investmentLabel.numberOfLines = 3
-        investmentLabel.setLineSpacing(lineSpacing: 4.0)
     }
     
     private func addProfitLabelSetups() {
-        profitLabel.attributedText = modificatorForProfitLabel()
         profitLabel.numberOfLines = 3
-        profitLabel.setLineSpacing(lineSpacing: 4.0)
     }
     
     // MARK: - Helpers
     
     // MARK: Private
     
-    private func modificatorForCoinLabel() -> NSMutableAttributedString {
+    private func modificatorForCoinLabel(_ symbol: String, _ name: String) -> NSMutableAttributedString {
         let firstAttributes: [NSAttributedString.Key: Any] = [
             NSAttributedString.Key.foregroundColor: UIColor.theme.title!,
             NSAttributedString.Key.font: UIFont.altone(17, .bold)
@@ -196,14 +202,14 @@ final class InvestmentsCollectionViewCell: UICollectionViewCell {
             NSAttributedString.Key.font: UIFont.altone(15, .medium)
         ]
         
-        let firstString = NSMutableAttributedString(string: "BTC/USD\n", attributes: firstAttributes)
+        let firstString = NSMutableAttributedString(string: "\(symbol.uppercased())/USD\n", attributes: firstAttributes)
         
-        let secondString = NSAttributedString(string: "Bitcoin", attributes: secondAttributes)
+        let secondString = NSAttributedString(string: "\(name)", attributes: secondAttributes)
         firstString.append(secondString)
         return firstString
     }
     
-    private func modificatorForInvestmentLabel() -> NSMutableAttributedString {
+    private func modificatorForInvestmentLabel(_ invest: Int) -> NSMutableAttributedString {
         let firstAttributes: [NSAttributedString.Key: Any] = [
             NSAttributedString.Key.foregroundColor: UIColor.gray,
             NSAttributedString.Key.font: UIFont.altone(15, .medium)
@@ -214,32 +220,32 @@ final class InvestmentsCollectionViewCell: UICollectionViewCell {
         
         let firstString = NSMutableAttributedString(string: "💰Investment\n", attributes: firstAttributes)
         
-        let secondString = NSAttributedString(string: "$300\n", attributes: secondAttributes)
+        let secondString = NSAttributedString(string: "$\(invest)\n", attributes: secondAttributes)
         let thirdString = NSAttributedString(string: "USDT", attributes: firstAttributes)
         firstString.append(secondString)
         firstString.append(thirdString)
         return firstString
     }
     
-    private func modificatorForProfitLabel() -> NSMutableAttributedString {
+    private func modificatorForProfitLabel(_ targetPrice: Int, _ profit: String, _ change: String, _ color: UIColor) -> NSMutableAttributedString {
         let firstAttributes: [NSAttributedString.Key: Any] = [
             NSAttributedString.Key.foregroundColor: UIColor.gray,
             NSAttributedString.Key.font: UIFont.altone(15, .medium)
         ]
         
         let secondAttributes: [NSAttributedString.Key: Any] = [
-            NSAttributedString.Key.font: UIFont.altone(16, .bold)
+            NSAttributedString.Key.font: UIFont.altone(14, .bold)
         ]
         
         let thirdAttributes: [NSAttributedString.Key: Any] = [
-            NSAttributedString.Key.foregroundColor: UIColor.systemRed,
-            NSAttributedString.Key.font: UIFont.altone(13, .medium)
+            NSAttributedString.Key.foregroundColor: color,
+            NSAttributedString.Key.font: UIFont.altone(12, .medium)
         ]
         
         let firstString = NSMutableAttributedString(string: "🥇Profit\n", attributes: firstAttributes)
         
-        let secondString = NSAttributedString(string: "$3300/$4000\n", attributes: secondAttributes)
-        let thirdString = NSAttributedString(string: "-0.25%", attributes: thirdAttributes)
+        let secondString = NSAttributedString(string: "$\(profit)/$\(targetPrice)\n", attributes: secondAttributes)
+        let thirdString = NSAttributedString(string: "\(change)", attributes: thirdAttributes)
         firstString.append(secondString)
         firstString.append(thirdString)
         return firstString

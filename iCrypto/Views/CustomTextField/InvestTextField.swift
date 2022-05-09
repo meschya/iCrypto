@@ -71,6 +71,7 @@ class InvestTextField: UIStackView {
     private func addSetups() {
         addLabelSetups()
         addTextFieldSetups()
+        spacing = 15
     }
     
     private func addLabelSetups() {
@@ -78,6 +79,7 @@ class InvestTextField: UIStackView {
     }
     
     private func addTextFieldSetups() {
-        textField.font = .altone(15, .medium)
+        textField.font = .altone(20, .medium)
+        textField.spacing(size: 20)
     }
 }

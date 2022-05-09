@@ -1,18 +1,30 @@
+import CoreData
 import UIKit
 
 final class AddInvestmentsViewController: UIViewController {
     // MARK: - Properties
     
+    // MARK: Public
+    
+    var coins: [CoinModel] = [] {
+        didSet {
+            coinPickerView.reloadAllComponents()
+        }
+    }
+    
     // MARK: Private
     
+    private var invest: Investment = .init()
+    private var nameCoin: String?
+    private var priceCoin: Double?
     private let scrollView: UIScrollView = .init()
     private let mainStackView: UIStackView = .init()
     private let coinStackView: UIStackView = .init()
     private let coinLabel: UILabel = .init()
     private let coinTextField: UITextField = .init()
-    private let coinPickerView: UIPickerView = UIPickerView()
     private let investTextField: InvestTextField = .init()
     private let targetTextField: InvestTextField = .init()
+    private let coinPickerView: UIPickerView = .init()
     
     // MARK: - Lifecycle
 
@@ -23,6 +35,13 @@ final class AddInvestmentsViewController: UIViewController {
         addContraints()
         scrollView.showsVerticalScrollIndicator = false
         view.backgroundColor = .systemBackground
+    }
+    
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        DispatchQueue.main.async {
+            self.coinTextField.setUnderLine()
+        }
     }
     
     // MARK: - Constraints
@@ -79,6 +98,7 @@ final class AddInvestmentsViewController: UIViewController {
         addCoinStackViewSetups()
         addInvestTextFieldSetups()
         addTargetTextFieldSetups()
+        createPicker()
     }
     
     private func configNavigationBar() {
@@ -86,7 +106,7 @@ final class AddInvestmentsViewController: UIViewController {
         navigationController?.navigationBar.prefersLargeTitles = true
         navigationItem.rightBarButtonItem = UIBarButtonItem(
             barButtonSystemItem: .save, target: self,
-            action: nil
+            action: #selector(saveButtonTapped)
         )
     }
     
@@ -101,6 +121,7 @@ final class AddInvestmentsViewController: UIViewController {
         coinStackView.axis = .horizontal
         coinStackView.distribution = .fillProportionally
         coinStackView.alignment = .fill
+        coinStackView.spacing = 15
     }
     
     private func addCoinLabelSetups() {
@@ -110,9 +131,12 @@ final class AddInvestmentsViewController: UIViewController {
     
     private func addCoinTextFieldSetups() {
         coinTextField.text = "BTC"
-        coinTextField.font = .altone(15, .medium)
-        coinTextField.layer.borderColor = UIColor.gray.cgColor
-        coinTextField.layer.borderWidth  = 1
+        coinTextField.font = .altone(20, .medium)
+        coinTextField.leftViewMode = .always
+        let imageView = UIImageView(frame: CGRect(x: 0, y: 0, width: 20, height: 20))
+        let image = UIImage(systemName: "bitcoinsign.circle")
+        imageView.image = image
+        coinTextField.leftView = imageView
     }
     
     private func addInvestTextFieldSetups() {
@@ -121,5 +145,84 @@ final class AddInvestmentsViewController: UIViewController {
     
     private func addTargetTextFieldSetups() {
         targetTextField.configurator("Target", .numberPad, "dollarsign.circle")
+    }
+    
+    // MARK: - Helpers
+    
+    // MARK: Private
+    
+    private func createPicker() {
+        coinPickerView.delegate = self
+        coinPickerView.dataSource = self
+        let toolBar = UIToolbar()
+        toolBar.sizeToFit()
+        let doneBtn = UIBarButtonItem(barButtonSystemItem: .done, target: nil, action: #selector(doneBtn))
+        doneBtn.tintColor = .theme.accent
+        toolBar.backgroundColor = .theme.background
+        toolBar.setItems([doneBtn], animated: true)
+        coinTextField.inputAccessoryView = toolBar
+        coinTextField.inputView = coinPickerView
+    }
+    
+    private func saveInvestInfo() {
+        CoreDataManager.instance.saveInvestment(invest,
+                                                coinTextField.text ?? "BTC",
+                                                nameCoin ?? "Bitcoin",
+                                                Double(investTextField.text) ?? 0.0,
+                                                Double(targetTextField.text) ?? 0.0,
+                                                priceCoin ?? 0.0)
+        navigationController?.popViewController(animated: true)
+    }
+    
+    private func voidСheck() -> Bool {
+        let checkAllInformation: Bool = (
+            coinTextField.text != ""
+                && investTextField.text != ""
+                && nameCoin != nil
+                && targetTextField.text != ""
+        )
+        return checkAllInformation
+    }
+    
+    // MARK: - Actions
+    
+    // MARK: Private
+    
+    @objc private func doneBtn() {
+        coinTextField.endEditing(true)
+    }
+    
+    @objc private func saveButtonTapped() {
+        if voidСheck() == true {
+            saveInvestInfo()
+        } else {
+            showAllert("Fill in all fields")
+        }
+    }
+    
+    private func showAllert(_ msg: String) {
+        let alert = UIAlertController(title: "Error", message: msg, preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: nil))
+        present(alert, animated: true, completion: nil)
+    }
+}
+
+extension AddInvestmentsViewController: UIPickerViewDelegate, UIPickerViewDataSource {
+    func numberOfComponents(in pickerView: UIPickerView) -> Int {
+        1
+    }
+
+    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+        coins.count
+    }
+
+    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+        return coins[row].symbol.uppercased()
+    }
+
+    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+        coinTextField.text = coins[row].symbol.uppercased()
+        nameCoin = coins[row].name
+        priceCoin = coins[row].currentPrice
     }
 }

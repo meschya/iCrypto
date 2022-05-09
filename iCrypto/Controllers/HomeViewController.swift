@@ -13,6 +13,7 @@ final class HomeViewController: UIViewController {
     private var coins: [CoinModel] = [] {
         didSet {
             self.cryptoTableView.reloadData()
+            self.headerView.coins = coins
         }
     }
 
@@ -38,7 +39,7 @@ final class HomeViewController: UIViewController {
     
     // MARK: - Networking
     
-    func fetchCoins() {
+    private func fetchCoins() {
         NetworkingManager.instance.getCoins { [weak self] result in
             self?.coins = result
         }
@@ -140,6 +141,9 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
 
 extension HomeViewController: TransferActionsBetweenVCDelegate {
     func viewScreen(_ addInvestments: AddInvestmentsViewController) {
-        navigationController?.pushViewController(addInvestments, animated: true)
+        if !coins.isEmpty {
+            navigationController?.pushViewController(addInvestments, animated: true)
+            addInvestments.coins = coins
+        }
     }
 }

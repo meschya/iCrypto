@@ -47,6 +47,7 @@
 		BFA4131F282804D300EF31A6 /* Transfers.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFA4131E282804D300EF31A6 /* Transfers.swift */; };
 		BFA413252828153D00EF31A6 /* InvestTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFA413242828153D00EF31A6 /* InvestTextField.swift */; };
 		BFA4132728281E5700EF31A6 /* UITextField+.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFA4132628281E5700EF31A6 /* UITextField+.swift */; };
+		BFA413292828311200EF31A6 /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFA413282828311200EF31A6 /* CoreDataManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -92,6 +93,7 @@
 		BFA4131E282804D300EF31A6 /* Transfers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Transfers.swift; sourceTree = "<group>"; };
 		BFA413242828153D00EF31A6 /* InvestTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InvestTextField.swift; sourceTree = "<group>"; };
 		BFA4132628281E5700EF31A6 /* UITextField+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextField+.swift"; sourceTree = "<group>"; };
+		BFA413282828311200EF31A6 /* CoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
 		C411730CE5FB27866963AA41 /* Pods_iCrypto.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_iCrypto.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		FF60742A26BDFD1679926BCA /* Pods-iCrypto.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iCrypto.release.xcconfig"; path = "Target Support Files/Pods-iCrypto/Pods-iCrypto.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -239,6 +241,7 @@
 			isa = PBXGroup;
 			children = (
 				BFA41301282696CD00EF31A6 /* NetworkingManager.swift */,
+				BFA413282828311200EF31A6 /* CoreDataManager.swift */,
 			);
 			path = Managers;
 			sourceTree = "<group>";
@@ -426,6 +429,7 @@
 				BFA413252828153D00EF31A6 /* InvestTextField.swift in Sources */,
 				BFA412BF2826846E00EF31A6 /* SceneDelegate.swift in Sources */,
 				BFA41318282726BE00EF31A6 /* WelcomeStackView.swift in Sources */,
+				BFA413292828311200EF31A6 /* CoreDataManager.swift in Sources */,
 				BFA4131C282803F300EF31A6 /* AddInvestmentsViewController.swift in Sources */,
 				BFA412FA28268B7100EF31A6 /* HomeViewController.swift in Sources */,
 				BFA4130628269A1F00EF31A6 /* String+.swift in Sources */,

@@ -1,16 +1,7 @@
+import CoreData
 import UIKit
 
-enum Tags: String {
-    case work = "Работа"
-    case study = "Учёба"
-    case eat = "Еда"
-    case sport = "Спорт"
-    case other = "Другое"
-    
-    static let allValues = [work, study, eat, sport, other]
-}
-
-final class WelcomeStackView: UIStackView {
+final class WelcomeStackView: UIStackView, NSFetchedResultsControllerDelegate {
     // MARK: - Properties
     
     // MARK: Public
@@ -20,6 +11,19 @@ final class WelcomeStackView: UIStackView {
     
     // MARK: Private
     
+    private var fetchResultController: NSFetchedResultsController<Investment>!
+    var coins: [CoinModel] = [] {
+        didSet {
+            investmentCollectionView.reloadData()
+        }
+    }
+
+    private var invests: [Investment] = [] {
+        didSet {
+            self.investmentCollectionView.reloadData()
+        }
+    }
+    
     private let welcomeStackView: UIStackView = .init()
     private let welcomeLabel: UILabel = .init()
     private let personImageView: UIImageView = .init()
@@ -27,7 +31,7 @@ final class WelcomeStackView: UIStackView {
     private let investmentsStackView: UIStackView = .init()
     private let investmentsLabel: UILabel = .init()
     private let investmentsImageView: UIImageView = .init()
-    private let tagCollectionView: UICollectionView = .init(frame: CGRect.zero, collectionViewLayout: UICollectionViewFlowLayout())
+    private let investmentCollectionView: UICollectionView = .init(frame: CGRect.zero, collectionViewLayout: UICollectionViewFlowLayout())
     private let layout = UICollectionViewFlowLayout()
     
     // MARK: - Initialization
@@ -37,6 +41,7 @@ final class WelcomeStackView: UIStackView {
         addSubviews()
         addContraints()
         addSetups()
+        coreDataSetups()
     }
     
     @available(*, unavailable)
@@ -50,6 +55,32 @@ final class WelcomeStackView: UIStackView {
         super.layoutSubviews()
         DispatchQueue.main.async {
             self.addPersonImageSetups()
+        }
+    }
+    
+    // MARK: - CoreData
+
+    private func coreDataSetups() {
+        let fetchRequest: NSFetchRequest<Investment> = Investment.fetchRequest()
+        let sortDescriptor = NSSortDescriptor(key: "coinSymbol", ascending: false)
+        fetchRequest.sortDescriptors = [sortDescriptor]
+        if let appDelegate = UIApplication.shared.delegate as? AppDelegate {
+            let context = appDelegate.persistentContainer.viewContext
+            fetchResultController = NSFetchedResultsController(
+                fetchRequest: fetchRequest,
+                managedObjectContext: context,
+                sectionNameKeyPath: nil,
+                cacheName: nil
+            )
+            fetchResultController.delegate = self
+            do {
+                try fetchResultController.performFetch()
+                if let fetchedObjects = fetchResultController.fetchedObjects {
+                    invests = fetchedObjects
+                }
+            } catch {
+                print(error)
+            }
         }
     }
 
@@ -79,10 +110,10 @@ final class WelcomeStackView: UIStackView {
     }
     
     private func addTagCollectionViewConstraints() {
-        tagCollectionView.translatesAutoresizingMaskIntoConstraints = false
-        tagCollectionView.leadingAnchor.constraint(equalTo: leadingAnchor).isActive = true
-        tagCollectionView.trailingAnchor.constraint(equalTo: trailingAnchor).isActive = true
-        tagCollectionView.heightAnchor.constraint(equalToConstant: 200).isActive = true
+        investmentCollectionView.translatesAutoresizingMaskIntoConstraints = false
+        investmentCollectionView.leadingAnchor.constraint(equalTo: leadingAnchor).isActive = true
+        investmentCollectionView.trailingAnchor.constraint(equalTo: trailingAnchor).isActive = true
+        investmentCollectionView.heightAnchor.constraint(equalToConstant: 200).isActive = true
     }
     
     private func addTableHeaderStackViewConstraints() {
@@ -119,7 +150,7 @@ final class WelcomeStackView: UIStackView {
                                              personImageView)
         addArrangedSubviews(countNotesLabel,
                             investmentsStackView,
-                            tagCollectionView,
+                            investmentCollectionView,
                             tableHeaderStackView)
         investmentsStackView.addArrangedSubviews(investmentsLabel,
                                                  investmentsImageView)
@@ -189,18 +220,18 @@ final class WelcomeStackView: UIStackView {
     }
     
     private func addTagCollectionViewSetupsUI() {
-        tagCollectionView.backgroundColor = .systemBackground
-        tagCollectionView.collectionViewLayout = layout
-        tagCollectionView.showsHorizontalScrollIndicator = false
+        investmentCollectionView.backgroundColor = .systemBackground
+        investmentCollectionView.collectionViewLayout = layout
+        investmentCollectionView.showsHorizontalScrollIndicator = false
         layout.scrollDirection = .horizontal
         layout.sectionInset = UIEdgeInsets(top: 0, left: 10, bottom: 0, right: 10)
         layout.itemSize = CGSize(width: 290, height: 190)
     }
     
     private func tagCollectionViewSetup() {
-        tagCollectionView.delegate = self
-        tagCollectionView.dataSource = self
-        tagCollectionView.register(InvestmentsCollectionViewCell.self, forCellWithReuseIdentifier: InvestmentsCollectionViewCell.identifier)
+        investmentCollectionView.delegate = self
+        investmentCollectionView.dataSource = self
+        investmentCollectionView.register(InvestmentsCollectionViewCell.self, forCellWithReuseIdentifier: InvestmentsCollectionViewCell.identifier)
     }
     
     // MARK: - Helpers
@@ -240,14 +271,53 @@ final class WelcomeStackView: UIStackView {
 
 extension WelcomeStackView: UICollectionViewDelegate, UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return Tags.allValues.count
+        return invests.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        if let cell = tagCollectionView.dequeueReusableCell(withReuseIdentifier: InvestmentsCollectionViewCell.identifier, for: indexPath) as? InvestmentsCollectionViewCell {
-            //cell.set(Tags.allValues[indexPath.item].rawValue)
+        if let cell = investmentCollectionView.dequeueReusableCell(withReuseIdentifier: InvestmentsCollectionViewCell.identifier, for: indexPath) as? InvestmentsCollectionViewCell {
+            for coin in coins {
+                let invest = invests[indexPath.row]
+                let changeColor = (coin.priceChangePercentage24H ?? 0.0 < 0)
+                if invest.coinSymbol?.uppercased() == coin.symbol.uppercased() {
+                    cell.set(invest.coinSymbol ?? "BTC",
+                             invest.coinName ?? "Bitcoin",
+                             invest.invest,
+                             invest.targetPrice,
+                             coin.priceChangePercentage24H?.asPercentString() ?? "0.0",
+                             coin.currentPrice,
+                             coin.image,
+                             changeColor ? .systemRed : .systemGreen,
+                             invest.buyingPrice)
+                }
+            }
             return cell
         }
         return UICollectionViewCell()
+    }
+    
+    // MARK: Fetch request methods
+
+    func controller(_ controller: NSFetchedResultsController<NSFetchRequestResult>, didChange anObject: Any, at indexPath: IndexPath?, for type: NSFetchedResultsChangeType, newIndexPath: IndexPath?) {
+        switch type {
+        case .insert:
+            if let newIndexPath = newIndexPath {
+                investmentCollectionView.insertItems(at: [newIndexPath])
+            }
+        case .delete:
+            if let indexPath = indexPath {
+                investmentCollectionView.deleteItems(at: [indexPath])
+            }
+        case .update:
+            if let indexPath = indexPath {
+                investmentCollectionView.reloadItems(at: [indexPath])
+            }
+        default:
+            investmentCollectionView.reloadData()
+        }
+
+        if let fetchedObjects = controller.fetchedObjects {
+            invests = fetchedObjects as! [Investment]
+        }
     }
 }
