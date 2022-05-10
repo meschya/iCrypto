@@ -171,7 +171,6 @@ final class CoinTableViewCell: UITableViewCell {
     
     private func addChangeLabelSetups() {
         changeLabel.font = .altone(13, .regular)
-        //   changeLabel.textColor = changeColor
     }
     
     private func addChartViewSetups() {

@@ -10,6 +10,7 @@ final class HomeViewController: UIViewController {
     private let panel: FloatingPanelController = .init()
     private let cryptoTableView: UITableView = .init()
     private var headerView = WelcomeStackView()
+    private let searchController: UISearchController = .init()
     private var coins: [CoinModel] = [] {
         didSet {
             self.cryptoTableView.reloadData()
@@ -74,7 +75,6 @@ final class HomeViewController: UIViewController {
         panel.set(contentViewController: vc)
         panel.surfaceView.appearance.cornerRadius = 20
         panel.addPanel(toParent: self)
-        //  panel.track(scrollView: vc.tableView)
     }
     
     // MARK: - Helpers
