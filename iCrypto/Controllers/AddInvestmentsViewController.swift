@@ -12,9 +12,15 @@ final class AddInvestmentsViewController: UIViewController {
         }
     }
     
+    var invest: Investment = .init() {
+        didSet {
+            print(invest)
+        }
+    }
+    var isEditingInvestment: Bool = false
+    
     // MARK: Private
     
-    private var invest: Investment = .init()
     private var nameCoin: String?
     private var priceCoin: Double?
     private let scrollView: UIScrollView = .init()
@@ -33,8 +39,7 @@ final class AddInvestmentsViewController: UIViewController {
         addSubviews()
         addSetups()
         addContraints()
-        scrollView.showsVerticalScrollIndicator = false
-        view.backgroundColor = .systemBackground
+        fillInfoInvest()
     }
     
     override func viewDidLayoutSubviews() {
@@ -91,6 +96,7 @@ final class AddInvestmentsViewController: UIViewController {
     }
     
     private func addSetups() {
+        addScrollAndViewSetups()
         configNavigationBar()
         addCoinLabelSetups()
         addCoinTextFieldSetups()
@@ -108,6 +114,11 @@ final class AddInvestmentsViewController: UIViewController {
             barButtonSystemItem: .save, target: self,
             action: #selector(saveButtonTapped)
         )
+    }
+    
+    private func addScrollAndViewSetups() {
+        scrollView.showsVerticalScrollIndicator = false
+        view.backgroundColor = .systemBackground
     }
     
     private func addMainStackViewSetups() {
@@ -174,6 +185,18 @@ final class AddInvestmentsViewController: UIViewController {
         navigationController?.popViewController(animated: true)
     }
     
+    private func setInvestInfo() {
+        invest.coinSymbol = coinTextField.text ?? "BTC"
+        invest.coinName = nameCoin ?? "Bitcoin"
+        invest.buyingPrice = priceCoin ?? 0.0
+        invest.invest = Double(investTextField.text) ?? 0.0
+        invest.targetPrice = Double(targetTextField.text) ?? 0.0
+        if let appDelegate = (UIApplication.shared.delegate as? AppDelegate) {
+            appDelegate.saveContext()
+        }
+        navigationController?.popViewController(animated: true)
+    }
+    
     private func voidСheck() -> Bool {
         let checkAllInformation: Bool = (
             coinTextField.text != ""
@@ -182,6 +205,22 @@ final class AddInvestmentsViewController: UIViewController {
                 && targetTextField.text != ""
         )
         return checkAllInformation
+    }
+    
+    private func fillInfoInvest() {
+        if !isEditingInvestment {
+            coinTextField.text = "BTC"
+            nameCoin = "Bitcoin"
+            priceCoin = 0.0
+            investTextField.text = ""
+            targetTextField.text = ""
+        } else if isEditingInvestment == true {
+            coinTextField.text = invest.coinSymbol?.uppercased()
+            nameCoin = invest.coinName
+            priceCoin = invest.buyingPrice
+            investTextField.text = "\(Int(invest.invest))"
+            targetTextField.text = "\(Int(invest.targetPrice))"
+        }
     }
     
     // MARK: - Actions
@@ -194,7 +233,11 @@ final class AddInvestmentsViewController: UIViewController {
     
     @objc private func saveButtonTapped() {
         if voidСheck() == true {
-            saveInvestInfo()
+            if !isEditingInvestment {
+                saveInvestInfo()
+            } else {
+                setInvestInfo()
+            }
         } else {
             showAllert("Fill in all fields")
         }

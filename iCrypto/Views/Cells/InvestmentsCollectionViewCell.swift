@@ -9,15 +9,20 @@ final class InvestmentsCollectionViewCell: UICollectionViewCell {
     
     // MARK: - Properties
     
-    // MARK: Private
+    // MARK: Public
     
+    var deleteHandler: (() -> ())?
+    var editHandler: (() -> ())?
+    
+    // MARK: Private
+
     private let investmentsView: UIView = .init()
     private let investmentsStackView: UIStackView = .init()
     private let coinStackView: UIStackView = .init()
     private let coinImageView: UIImageView = .init()
     private let confettiView: ConfettiView = .init()
     private let coinLabel: UILabel = .init()
-    private let settingsImageView: UIImageView = .init()
+    private let settingsImageView: ResponsiveImageView = .init()
     private let progressView: UIProgressView = .init()
     private let infoStackView: UIStackView = .init()
     private let investmentLabel: UILabel = .init()
@@ -116,7 +121,7 @@ final class InvestmentsCollectionViewCell: UICollectionViewCell {
     
     private func addSubviews() {
         contentView.addSubview(investmentsView)
-        investmentsView.addSubview(investmentsStackView)
+        investmentsView.addSubviews(investmentsStackView)
         investmentsStackView.addArrangedSubviews(coinStackView,
                                                  progressView,
                                                  infoStackView)
@@ -183,6 +188,10 @@ final class InvestmentsCollectionViewCell: UICollectionViewCell {
     private func addSettingsImageView() {
         settingsImageView.image = UIImage(systemName: "ellipsis")
         settingsImageView.tintColor = .theme.accent
+        let longPressGR = UILongPressGestureRecognizer(target: self, action: #selector(longPressHandler))
+        longPressGR.minimumPressDuration = 0
+        settingsImageView.isUserInteractionEnabled = true
+        settingsImageView.addGestureRecognizer(longPressGR)
     }
     
     private func addInvestmentLabelSetups() {
@@ -263,5 +272,35 @@ final class InvestmentsCollectionViewCell: UICollectionViewCell {
         firstString.append(secondString)
         firstString.append(thirdString)
         return firstString
+    }
+    
+    // MARK: - Actions
+    
+    // MARK: Private
+    
+    @objc private func longPressHandler() {
+        settingsImageView.becomeFirstResponder()
+        
+        let menu = UIMenuController()
+        menu.arrowDirection = .default
+        menu.showMenu(from: coinStackView, rect: settingsImageView.frame)
+        
+        let editMenuItem = UIMenuItem(title: "Edit", action: #selector(editTapped))
+        let deleteMenuItem = UIMenuItem(title: "Delete", action: #selector(deleteTapped))
+        menu.menuItems = [editMenuItem, deleteMenuItem]
+    }
+    
+    @objc private func editTapped() {
+        editHandler?()
+    }
+    
+    @objc private func deleteTapped() {
+        deleteHandler?()
+    }
+}
+
+class ResponsiveImageView: UIImageView {
+    override var canBecomeFirstResponder: Bool {
+        return true
     }
 }

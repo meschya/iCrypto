@@ -274,6 +274,7 @@ final class WelcomeStackView: UIStackView, NSFetchedResultsControllerDelegate {
     
     @objc private func addInsvestmentsClick() {
         let addInsvestmentVC = AddInvestmentsViewController()
+        addInsvestmentVC.isEditingInvestment = false
         delegate?.viewScreen(addInsvestmentVC)
     }
 }
@@ -298,6 +299,12 @@ extension WelcomeStackView: UICollectionViewDelegate, UICollectionViewDataSource
                              coin.image,
                              changeColor ? .systemRed : .systemGreen,
                              invest.buyingPrice)
+                    cell.deleteHandler = {
+                        self.deleteCell(indexPath: indexPath)
+                    }
+                    cell.editHandler = {
+                        self.editCell(indexPath: indexPath)
+                    }
                 }
             }
             return cell
@@ -327,5 +334,23 @@ extension WelcomeStackView: UICollectionViewDelegate, UICollectionViewDataSource
         if let fetchedObjects = controller.fetchedObjects {
             invests = fetchedObjects as! [Investment]
         }
+    }
+    
+    // MARK: Delete and Edit cell CollectionView
+    
+    private func deleteCell(indexPath: IndexPath) {
+        guard let appDelegate = (UIApplication.shared.delegate as? AppDelegate) else { return }
+        let context = appDelegate.persistentContainer.viewContext
+        let investDelete = fetchResultController.object(at: indexPath)
+        investmentCollectionView.deleteItems(at: [indexPath])
+        context.delete(investDelete)
+        appDelegate.saveContext()
+    }
+    
+    private func editCell(indexPath: IndexPath) {
+        let addInsvestmentVC = AddInvestmentsViewController()
+        addInsvestmentVC.invest = invests[indexPath.item]
+        addInsvestmentVC.isEditingInvestment = true
+        delegate?.viewScreen(addInsvestmentVC)
     }
 }
