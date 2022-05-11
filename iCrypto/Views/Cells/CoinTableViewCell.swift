@@ -15,7 +15,7 @@ final class CoinTableViewCell: UITableViewCell {
     private let infoStackView: UIStackView = .init()
     private let nameCoinLabel: UILabel = .init()
     private let symbolLabel: UILabel = .init()
-    private let chart: StockCharView = .init()
+    private let chart: CryptoLineChartView = .init()
     private let priceStackView: UIStackView = .init()
     private let priceLabel: UILabel = .init()
     private let changeLabel: UILabel = .init()
@@ -41,7 +41,7 @@ final class CoinTableViewCell: UITableViewCell {
     
     // MARK: - API
     
-    func set(_ image: String, _ nameCoin: String, _ symbol: String, _ price: String, _ change: String, _ color: UIColor, _ data: StockCharView.ViewModel) {
+    func set(_ image: String, _ nameCoin: String, _ symbol: String, _ price: String, _ change: String, _ color: UIColor, _ data: CryptoLineChartView.ViewModel) {
         coinImageView.kf.setImage(with: URL(string: image))
         nameCoinLabel.text = nameCoin
         symbolLabel.text = symbol + "/USD"

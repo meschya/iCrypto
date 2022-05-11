@@ -2,10 +2,19 @@ import UIKit
 
 final class MainTabBarController: UITabBarController {
     // MARK: - Properties
+    
+    // MARK: Public
+    
+    private var coins: [CoinModel] = [] {
+        didSet {
+            self.walletTVC.coins = coins
+            self.homeTVC.coins = coins
+        }
+    }
 
     // MARK: Private
 
-    private let homeTVC = UINavigationController(rootViewController: HomeViewController())
+    private let homeTVC = HomeViewController()
     private let walletTVC = WalletTableViewController()
     private let settingsTVC = SettingsTableViewController()
 
@@ -15,6 +24,15 @@ final class MainTabBarController: UITabBarController {
         super.viewDidLoad()
         addSetups()
         tabBar.backgroundColor = .theme.background
+        fetchCoins()
+    }
+    
+    // MARK: - Networking
+    
+    private func fetchCoins() {
+        NetworkingManager.instance.getCoins { [weak self] result in
+            self?.coins = result
+        }
     }
 
     // MARK: - Setups
@@ -23,16 +41,13 @@ final class MainTabBarController: UITabBarController {
 
     private func addSetups() {
         addVCToTabBar()
-        addImageInTabBar()
         addTitleInTabBar()
     }
 
     private func addVCToTabBar() {
-        setViewControllers([homeTVC, walletTVC, settingsTVC], animated: true)
-    }
-
-    private func addImageInTabBar() {
-        homeTVC.tabBarItem.image = UIImage(systemName: "house")
+        let homeTVCNav = UINavigationController(rootViewController: homeTVC)
+        setViewControllers([homeTVCNav, walletTVC, settingsTVC], animated: true)
+        homeTVCNav.tabBarItem.image = UIImage(systemName: "house")
         walletTVC.tabBarItem.image = UIImage(systemName: "wallet.pass")
         settingsTVC.tabBarItem.image = UIImage(systemName: "gear")
     }

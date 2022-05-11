@@ -121,7 +121,7 @@ final class InvestmentsCollectionViewCell: UICollectionViewCell {
     
     private func addSubviews() {
         contentView.addSubview(investmentsView)
-        investmentsView.addSubviews(investmentsStackView)
+        investmentsView.addSubview(investmentsStackView)
         investmentsStackView.addArrangedSubviews(coinStackView,
                                                  progressView,
                                                  infoStackView)
@@ -147,7 +147,13 @@ final class InvestmentsCollectionViewCell: UICollectionViewCell {
     
     private func addContentViewSetups() {
         contentView.backgroundColor = .systemBackground
-        confettiView.frame = contentView.bounds
+        confettiView.frame = contentView.frame(
+            forAlignmentRect:
+            CGRect(
+                x: 0,
+                y: 0,
+                width: contentView.frame.width - 25,
+                height: contentView.frame.height))
     }
     
     private func addInvestmentsViewSetups() {
@@ -299,7 +305,7 @@ final class InvestmentsCollectionViewCell: UICollectionViewCell {
     }
 }
 
-class ResponsiveImageView: UIImageView {
+final class ResponsiveImageView: UIImageView {
     override var canBecomeFirstResponder: Bool {
         return true
     }

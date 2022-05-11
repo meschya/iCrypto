@@ -47,10 +47,6 @@ struct CoinModel: Identifiable, Codable {
         case currentHoldings
     }
     
-    var currentHoldingsValue: Double {
-        return (currentHoldings ?? 0) * currentPrice
-    }
-    
     var rank: Int {
         return Int(marketCapRank ?? 0)
     }

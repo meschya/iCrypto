@@ -7,7 +7,7 @@ final class CoinViewController: UIViewController {
     
     private let scrollView: UIScrollView = .init()
     private let mainStackView: UIStackView = .init()
-    private let chartView: StockCharView = .init()
+    private let chartView: CryptoLineChartView = .init()
     private let overviewLabel: UILabel = .init()
     private let capitalizationStackView: CapitalizationStackView = .init()
     var coin: CoinModel?

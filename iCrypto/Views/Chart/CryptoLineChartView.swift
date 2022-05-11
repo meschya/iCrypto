@@ -1,7 +1,7 @@
 import UIKit
 import Charts
 
-final class StockCharView: UIView {
+final class CryptoLineChartView: UIView {
     // MARK: - Properties
     
     // MARK: Private

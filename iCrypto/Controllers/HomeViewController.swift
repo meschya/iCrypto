@@ -11,7 +11,7 @@ final class HomeViewController: UIViewController {
     private let cryptoTableView: UITableView = .init()
     private var headerView = WelcomeStackView()
     private let searchController: UISearchController = .init()
-    private var coins: [CoinModel] = [] {
+    var coins: [CoinModel] = [] {
         didSet {
             self.cryptoTableView.reloadData()
             self.headerView.coins = coins
@@ -24,7 +24,6 @@ final class HomeViewController: UIViewController {
         super.viewDidLoad()
         addSubviews()
         addSetups()
-        fetchCoins()
         refreshTable()
     }
     
@@ -36,14 +35,6 @@ final class HomeViewController: UIViewController {
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         navigationController?.setNavigationBarHidden(false, animated: animated)
-    }
-    
-    // MARK: - Networking
-    
-    private func fetchCoins() {
-        NetworkingManager.instance.getCoins { [weak self] result in
-            self?.coins = result
-        }
     }
 
     // MARK: - Setups
