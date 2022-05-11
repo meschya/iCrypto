@@ -12,11 +12,7 @@ final class AddInvestmentsViewController: UIViewController {
         }
     }
     
-    var invest: Investment = .init() {
-        didSet {
-            print(invest)
-        }
-    }
+    var invest: Investment = .init()
     var isEditingInvestment: Bool = false
     
     // MARK: Private

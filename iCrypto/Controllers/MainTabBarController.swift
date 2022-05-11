@@ -1,19 +1,24 @@
 import UIKit
+import CoreData
 
-final class MainTabBarController: UITabBarController {
+final class MainTabBarController: UITabBarController, NSFetchedResultsControllerDelegate {
     // MARK: - Properties
-    
-    // MARK: Public
-    
+
+    // MARK: Private
     private var coins: [CoinModel] = [] {
         didSet {
             self.walletTVC.coins = coins
             self.homeTVC.coins = coins
         }
     }
-
-    // MARK: Private
-
+    
+    private var wallets: [Wallet] = [] {
+        didSet {
+            print(wallets)
+            self.walletTVC.wallets = wallets
+        }
+    }
+    private var fetchResultController: NSFetchedResultsController<Wallet>!
     private let homeTVC = HomeViewController()
     private let walletTVC = WalletTableViewController()
     private let settingsTVC = SettingsTableViewController()
@@ -25,6 +30,33 @@ final class MainTabBarController: UITabBarController {
         addSetups()
         tabBar.backgroundColor = .theme.background
         fetchCoins()
+        coreDataSetups()
+    }
+    
+    // MARK: - CoreData
+
+    private func coreDataSetups() {
+        let fetchRequest: NSFetchRequest<Wallet> = Wallet.fetchRequest()
+        let sortDescriptor = NSSortDescriptor(key: "coinSymbol", ascending: false)
+        fetchRequest.sortDescriptors = [sortDescriptor]
+        if let appDelegate = UIApplication.shared.delegate as? AppDelegate {
+            let context = appDelegate.persistentContainer.viewContext
+            fetchResultController = NSFetchedResultsController(
+                fetchRequest: fetchRequest,
+                managedObjectContext: context,
+                sectionNameKeyPath: nil,
+                cacheName: nil
+            )
+            fetchResultController.delegate = self
+            do {
+                try fetchResultController.performFetch()
+                if let fetchedObjects = fetchResultController.fetchedObjects {
+                    wallets = fetchedObjects
+                }
+            } catch {
+                print(error)
+            }
+        }
     }
     
     // MARK: - Networking

@@ -5,12 +5,18 @@ final class CoinViewController: UIViewController {
     
     // MARK: Private
     
+    var coin: CoinModel?
+    
+    // MARK: Private
+    
     private let scrollView: UIScrollView = .init()
     private let mainStackView: UIStackView = .init()
     private let chartView: CryptoLineChartView = .init()
+    private let overviewAndWalletButtonStackView: UIStackView = .init()
     private let overviewLabel: UILabel = .init()
+    private let walletButton: UIButton = .init()
     private let capitalizationStackView: CapitalizationStackView = .init()
-    var coin: CoinModel?
+    private var wallet: Wallet = .init()
     
     // MARK: - Lifecycle
     
@@ -61,8 +67,10 @@ final class CoinViewController: UIViewController {
         view.addSubviews(scrollView)
         scrollView.addSubview(mainStackView)
         mainStackView.addArrangedSubviews(chartView,
-                                          overviewLabel,
+                                          overviewAndWalletButtonStackView,
                                           capitalizationStackView)
+        overviewAndWalletButtonStackView.addArrangedSubviews(overviewLabel,
+                                                             walletButton)
     }
     
     private func addSetups() {
@@ -71,6 +79,7 @@ final class CoinViewController: UIViewController {
         addNavigationSetups()
         addChartSetups()
         addOverviewLabelSetups()
+        addWalletButtonSetups()
     }
     
     private func addMainStackViewSetups() {
@@ -89,6 +98,12 @@ final class CoinViewController: UIViewController {
     private func addOverviewLabelSetups() {
         overviewLabel.text = "Overview"
         overviewLabel.font = .altone(30, .bold)
+    }
+    
+    private func addWalletButtonSetups() {
+        walletButton.setTitle("+ Wallet", for: .normal)
+        walletButton.setTitleColor(.theme.accent, for: .normal)
+        walletButton.addTarget(self, action: #selector(saveCoin), for: .touchUpInside)
     }
     
     private func addViewSetups() {
@@ -123,8 +138,8 @@ final class CoinViewController: UIViewController {
     private func setCurrentPriceLabel() {
         let changeColor = (coin?.priceChangePercentage24H ?? 0.0 < 0)
         capitalizationStackView.setCurrentPriceLabel(coin?.currentPrice.asCurrencyWith6Decimals() ?? "0.0",
-                                                       coin?.priceChangePercentage24H?.asPercentString() ?? "0.0",
-                                                       changeColor ? .systemRed : .systemGreen)
+                                                     coin?.priceChangePercentage24H?.asPercentString() ?? "0.0",
+                                                     changeColor ? .systemRed : .systemGreen)
     }
     
     private func setCapitalizationLabel() {
@@ -142,11 +157,24 @@ final class CoinViewController: UIViewController {
         capitalizationStackView.setVolumeLabel(coin?.totalVolume?.formattedWithAbbreviations() ?? "0.0")
     }
     
+    private func showResultAlert(_ companyName: String) {
+        let alert = UIAlertController(title: "Added to WatchList", message: "We've added \(companyName) to your watchlist.", preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "Dismiss", style: .cancel, handler: nil))
+        present(alert, animated: true)
+    }
+    
     // MARK: - Actions
     
     // MARK: Private
     
     @objc private func didTapClose() {
         dismiss(animated: true)
+    }
+    
+    @objc private func saveCoin() {
+        CoreDataManager.instance.saveWallet(wallet,
+                                            coin?.symbol ?? "BTC")
+        showResultAlert(coin?.name ?? "Bitcoin")
+        walletButton.isHidden = true
     }
 }

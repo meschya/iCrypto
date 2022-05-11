@@ -23,5 +23,13 @@ final class CoreDataManager {
         }
     }
     
+    func saveWallet(_ wallet: Wallet, _ symbol: String) {
+        var wallet = wallet
+        if let appDelegate = (UIApplication.shared.delegate as? AppDelegate) {
+            wallet = Wallet(context: appDelegate.persistentContainer.viewContext)
+            wallet.coinSymbol = symbol
+        }
+    }
+    
     private init() {}
 }
