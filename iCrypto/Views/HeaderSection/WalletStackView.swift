@@ -5,13 +5,15 @@ final class WalletStackView: UIStackView {
     
     // MARK: Private
     
-    private let barChartView: CryptoBarChartView = .init()
+    private let walletLabel: UILabel = .init()
     
     // MARK: - Initialization
     
     override init(frame: CGRect) {
         super.init(frame: frame)
         addSubviews()
+        addSetups()
+        addContraints()
     }
     
     @available(*, unavailable)
@@ -19,15 +21,25 @@ final class WalletStackView: UIStackView {
         fatalError("init(coder:) has not been implemented")
     }
     
+    // MARK: - Constraints
+    
+    // MARK: Private
+    
+    private func addContraints() {
+        walletLabel.translatesAutoresizingMaskIntoConstraints = false
+        walletLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 15).isActive = true
+    }
+    
     // MARK: - Setups
     
     // MARK: Private
     
     private func addSubviews() {
-        addArrangedSubview(barChartView)
+        addArrangedSubview(walletLabel)
     }
     
     private func addSetups() {
-        
+        walletLabel.text = "Your wallet 💳"
+        walletLabel.font = .altone(35, .bold)
     }
 }

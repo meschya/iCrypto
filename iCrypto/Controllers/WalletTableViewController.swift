@@ -1,32 +1,61 @@
-import UIKit
 import CoreData
+import UIKit
 
-class WalletTableViewController: UITableViewController, NSFetchedResultsControllerDelegate {
+final class WalletTableViewController: UITableViewController, NSFetchedResultsControllerDelegate {
     // MARK: - Properties
-    
+
     // MARK: Public
-    
-    var wallets: [Wallet] = [] {
-        didSet {
-            self.tableView.reloadData()
-        }
-    }
+
     var coins: [CoinModel] = [] {
         didSet {
-            self.tableView.reloadData()
+            coreDataSetups()
+            tableView.reloadData()
         }
     }
 
     // MARK: Private
 
+    private var wallets: [Wallet] = [] {
+        didSet {
+            tableView.reloadData()
+        }
+    }
+
     private var fetchResultController: NSFetchedResultsController<Wallet>!
     private var headerView: WalletStackView = .init()
-    
+
     // MARK: - Lifecycle
 
     override func viewDidLoad() {
         super.viewDidLoad()
         addSetups()
+    }
+
+    // MARK: - CoreData
+
+    private func coreDataSetups() {
+        let fetchRequest: NSFetchRequest<Wallet> = Wallet.fetchRequest()
+        let sortDescriptor = NSSortDescriptor(key: "coinSymbol", ascending: false)
+        fetchRequest.sortDescriptors = [sortDescriptor]
+        if let appDelegate = UIApplication.shared.delegate as? AppDelegate {
+            let context = appDelegate.persistentContainer.viewContext
+            fetchResultController = NSFetchedResultsController(
+                fetchRequest: fetchRequest,
+                managedObjectContext: context,
+                sectionNameKeyPath: nil,
+                cacheName: nil
+            )
+            fetchResultController.delegate = self
+            do {
+                try fetchResultController.performFetch()
+                if let fetchedObjects = fetchResultController.fetchedObjects {
+                    wallets = fetchedObjects
+                    tableView.reloadData()
+                }
+            } catch {
+                print(error)
+            }
+        }
     }
 
     // MARK: - Setups
@@ -39,15 +68,15 @@ class WalletTableViewController: UITableViewController, NSFetchedResultsControll
         addHeaderView()
         addTableViewSetups()
     }
-    
+
     private func addTableViewSetups() {
         tableView.separatorStyle = .none
         tableView.register(WalletTableViewCell.self, forCellReuseIdentifier: WalletTableViewCell.identifier)
     }
 
     private func addHeaderView() {
-        headerView = WalletStackView(frame: CGRect(x: 0, y: 0, width: view.bounds.width, height: 220))
-        //tableView.tableHeaderView = headerView
+        headerView = WalletStackView(frame: CGRect(x: 0, y: 0, width: view.bounds.width, height: 60))
+        tableView.tableHeaderView = headerView
     }
 
     // MARK: - Table view data source
@@ -55,12 +84,12 @@ class WalletTableViewController: UITableViewController, NSFetchedResultsControll
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return wallets.count
     }
-    
+
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if let cell = tableView.dequeueReusableCell(withIdentifier: WalletTableViewCell.identifier, for: indexPath) as? WalletTableViewCell {
-            let coin = coins[indexPath.row]
-            for wallet in wallets {
-                if wallet.coinSymbol == coin.symbol.uppercased() {
+            let wallet = wallets[indexPath.row]
+            for coin in coins {
+                if coin.symbol.uppercased() == wallet.coinSymbol?.uppercased() {
                     let changeColor = (coin.priceChangePercentage24H ?? 0.0 < 0)
                     cell.walletView.set(coin.name,
                                         coin.symbol,
@@ -79,13 +108,25 @@ class WalletTableViewController: UITableViewController, NSFetchedResultsControll
         }
         return UITableViewCell()
     }
-    
+
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let coinVC = CoinViewController()
+        let wallet = wallets[indexPath.row]
+        for coin in coins {
+            if coin.symbol.uppercased() == wallet.coinSymbol?.uppercased() {
+                coinVC.coin = coin
+                coinVC.walletButton.isHidden = true
+            }
+        }
+        present(UINavigationController(rootViewController: coinVC), animated: true)
+    }
+
     // MARK: Fetch request methods
-    
+
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 200
     }
-    
+
     func controllerWillChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
         tableView.beginUpdates()
     }
@@ -119,20 +160,22 @@ class WalletTableViewController: UITableViewController, NSFetchedResultsControll
 
     // MARK: Add Delete button to TableView
 
-    override func tableView(_ tableView: UITableView, editingStyleForRowAt indexPath: IndexPath) -> UITableViewCell.EditingStyle {
-        return .delete
-    }
-
-    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
-        guard let appDelegate = (UIApplication.shared.delegate as? AppDelegate) else { return }
-        let context = appDelegate.persistentContainer.viewContext
-        let movieDelete = fetchResultController.object(at: indexPath)
-        if editingStyle == .delete {
-            tableView.beginUpdates()
-            tableView.deleteRows(at: [indexPath], with: .fade)
-            context.delete(movieDelete)
-            appDelegate.saveContext()
-            tableView.endUpdates()
-        }
+    override func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath)
+            -> UISwipeActionsConfiguration? {
+            let deleteAction = UIContextualAction(style: .destructive, title: nil) { (_, _, completionHandler) in
+                guard let appDelegate = (UIApplication.shared.delegate as? AppDelegate) else { return }
+                let context = appDelegate.persistentContainer.viewContext
+                let movieDelete = self.fetchResultController.object(at: indexPath)
+                self.tableView.beginUpdates()
+                self.tableView.deleteRows(at: [indexPath], with: .fade)
+                context.delete(movieDelete)
+                appDelegate.saveContext()
+                tableView.endUpdates()
+                completionHandler(true)
+            }
+            deleteAction.image = UIImage(systemName: "trash")
+            deleteAction.backgroundColor = .systemRed
+            let configuration = UISwipeActionsConfiguration(actions: [deleteAction])
+            return configuration
     }
 }

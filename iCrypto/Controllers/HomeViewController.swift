@@ -3,6 +3,21 @@ import UIKit
 
 final class HomeViewController: UIViewController {
     // MARK: - Properties
+    
+    // MARK: Public
+    
+    var coins: [CoinModel] = [] {
+        didSet {
+            self.cryptoTableView.reloadData()
+            self.headerView.coins = coins
+        }
+    }
+    
+    var wallets: [Wallet] = [] {
+        didSet {
+            self.cryptoTableView.reloadData()
+        }
+    }
 
     // MARK: Private
 
@@ -11,12 +26,6 @@ final class HomeViewController: UIViewController {
     private let cryptoTableView: UITableView = .init()
     private var headerView = WelcomeStackView()
     private let searchController: UISearchController = .init()
-    var coins: [CoinModel] = [] {
-        didSet {
-            self.cryptoTableView.reloadData()
-            self.headerView.coins = coins
-        }
-    }
 
     // MARK: - Lifecycle
 
@@ -126,6 +135,11 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let coinVC = CoinViewController()
         coinVC.coin = coins[indexPath.row]
+        for wallet in wallets {
+            if coins[indexPath.row].symbol.uppercased() == wallet.coinSymbol?.uppercased() {
+                coinVC.walletButton.isHidden = true
+            }
+        }
         present(UINavigationController(rootViewController: coinVC), animated: true)
     }
 }

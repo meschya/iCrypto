@@ -28,6 +28,19 @@ final class CoreDataManager {
         if let appDelegate = (UIApplication.shared.delegate as? AppDelegate) {
             wallet = Wallet(context: appDelegate.persistentContainer.viewContext)
             wallet.coinSymbol = symbol
+            appDelegate.saveContext()
+        }
+    }
+    
+    func saveProfile(_ profile: Profile, _ name: String, _ phoneNumber: String, _ date: Date, _ image: UIImage) {
+        var profile = profile
+        if let appDelegate = (UIApplication.shared.delegate as? AppDelegate) {
+            profile = profile(context: appDelegate.persistentContainer.viewContext)
+            profile.name = name
+            profile.phoneNumber = phoneNumber
+            profile.date = date
+            profile.image = image.pngData()
+            appDelegate.saveContext()
         }
     }
     

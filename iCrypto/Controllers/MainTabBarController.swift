@@ -14,14 +14,14 @@ final class MainTabBarController: UITabBarController, NSFetchedResultsController
     
     private var wallets: [Wallet] = [] {
         didSet {
-            print(wallets)
-            self.walletTVC.wallets = wallets
+            self.homeTVC.wallets = wallets
         }
     }
+    
     private var fetchResultController: NSFetchedResultsController<Wallet>!
     private let homeTVC = HomeViewController()
     private let walletTVC = WalletTableViewController()
-    private let settingsTVC = SettingsTableViewController()
+    private let settingsVC = SettingsViewController()
 
     // MARK: - LIfecycle
 
@@ -78,16 +78,16 @@ final class MainTabBarController: UITabBarController, NSFetchedResultsController
 
     private func addVCToTabBar() {
         let homeTVCNav = UINavigationController(rootViewController: homeTVC)
-        setViewControllers([homeTVCNav, walletTVC, settingsTVC], animated: true)
+        setViewControllers([homeTVCNav, walletTVC, settingsVC], animated: true)
         homeTVCNav.tabBarItem.image = UIImage(systemName: "house")
         walletTVC.tabBarItem.image = UIImage(systemName: "wallet.pass")
-        settingsTVC.tabBarItem.image = UIImage(systemName: "gear")
+        settingsVC.tabBarItem.image = UIImage(systemName: "gear")
     }
 
     private func addTitleInTabBar() {
         homeTVC.title = "Home"
         walletTVC.title = "Wallet"
-        settingsTVC.title = "Settings"
+        settingsVC.title = "Settings"
         tabBar.tintColor = .theme.accent
     }
 }

@@ -3,9 +3,10 @@ import UIKit
 final class CoinViewController: UIViewController {
     // MARK: - Properties
     
-    // MARK: Private
+    // MARK: Public
     
     var coin: CoinModel?
+    let walletButton: UIButton = .init()
     
     // MARK: Private
     
@@ -14,7 +15,6 @@ final class CoinViewController: UIViewController {
     private let chartView: CryptoLineChartView = .init()
     private let overviewAndWalletButtonStackView: UIStackView = .init()
     private let overviewLabel: UILabel = .init()
-    private let walletButton: UIButton = .init()
     private let capitalizationStackView: CapitalizationStackView = .init()
     private var wallet: Wallet = .init()
     
@@ -173,7 +173,7 @@ final class CoinViewController: UIViewController {
     
     @objc private func saveCoin() {
         CoreDataManager.instance.saveWallet(wallet,
-                                            coin?.symbol ?? "BTC")
+                                            coin?.symbol.uppercased() ?? "BTC")
         showResultAlert(coin?.name ?? "Bitcoin")
         walletButton.isHidden = true
     }

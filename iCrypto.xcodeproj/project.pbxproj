@@ -8,11 +8,15 @@
 
 /* Begin PBXBuildFile section */
 		7DD0C1A8AFFBEA1A9107C270 /* Pods_iCrypto.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C411730CE5FB27866963AA41 /* Pods_iCrypto.framework */; };
-		BF016860282AE19F001D2B0C /* CryptoBarChartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF01685F282AE19F001D2B0C /* CryptoBarChartView.swift */; };
 		BF016862282B2D4B001D2B0C /* WalletStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF016861282B2D4B001D2B0C /* WalletStackView.swift */; };
 		BF016864282BC58F001D2B0C /* WalletTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF016863282BC58F001D2B0C /* WalletTableViewCell.swift */; };
 		BF016868282BC680001D2B0C /* WalletView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF016867282BC680001D2B0C /* WalletView.swift */; };
 		BF01686B282C439E001D2B0C /* Enums.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF01686A282C439E001D2B0C /* Enums.swift */; };
+		BF01686D282C74E1001D2B0C /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF01686C282C74E1001D2B0C /* SettingsViewController.swift */; };
+		BF016870282C7624001D2B0C /* PersonImageStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF01686F282C7624001D2B0C /* PersonImageStackView.swift */; };
+		BF016872282C7671001D2B0C /* SelectImageCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF016871282C7671001D2B0C /* SelectImageCollectionViewCell.swift */; };
+		BF016874282C78F7001D2B0C /* InfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF016873282C78F7001D2B0C /* InfoView.swift */; };
+		BF016876282C78FC001D2B0C /* InfoTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF016875282C78FC001D2B0C /* InfoTextField.swift */; };
 		BFA412BD2826846E00EF31A6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFA412BC2826846E00EF31A6 /* AppDelegate.swift */; };
 		BFA412BF2826846E00EF31A6 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFA412BE2826846E00EF31A6 /* SceneDelegate.swift */; };
 		BFA412C72826846E00EF31A6 /* iCrypto.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = BFA412C52826846E00EF31A6 /* iCrypto.xcdatamodeld */; };
@@ -20,7 +24,6 @@
 		BFA412CC2826847000EF31A6 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BFA412CA2826847000EF31A6 /* LaunchScreen.storyboard */; };
 		BFA412DA2826863F00EF31A6 /* MainTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFA412D92826863F00EF31A6 /* MainTabBarController.swift */; };
 		BFA412DE2826889700EF31A6 /* WalletTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFA412DD2826889700EF31A6 /* WalletTableViewController.swift */; };
-		BFA412E02826889E00EF31A6 /* SettingsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFA412DF2826889E00EF31A6 /* SettingsTableViewController.swift */; };
 		BFA412E2282689B100EF31A6 /* UIFont+.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFA412E1282689B100EF31A6 /* UIFont+.swift */; };
 		BFA412E4282689B900EF31A6 /* UIColor+.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFA412E3282689B900EF31A6 /* UIColor+.swift */; };
 		BFA412E6282689BE00EF31A6 /* UIStackView+.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFA412E5282689BE00EF31A6 /* UIStackView+.swift */; };
@@ -59,11 +62,15 @@
 
 /* Begin PBXFileReference section */
 		A3F1166BAD6C7B9ED6952D34 /* Pods-iCrypto.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iCrypto.debug.xcconfig"; path = "Target Support Files/Pods-iCrypto/Pods-iCrypto.debug.xcconfig"; sourceTree = "<group>"; };
-		BF01685F282AE19F001D2B0C /* CryptoBarChartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CryptoBarChartView.swift; sourceTree = "<group>"; };
 		BF016861282B2D4B001D2B0C /* WalletStackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalletStackView.swift; sourceTree = "<group>"; };
 		BF016863282BC58F001D2B0C /* WalletTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalletTableViewCell.swift; sourceTree = "<group>"; };
 		BF016867282BC680001D2B0C /* WalletView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalletView.swift; sourceTree = "<group>"; };
 		BF01686A282C439E001D2B0C /* Enums.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Enums.swift; sourceTree = "<group>"; };
+		BF01686C282C74E1001D2B0C /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
+		BF01686F282C7624001D2B0C /* PersonImageStackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonImageStackView.swift; sourceTree = "<group>"; };
+		BF016871282C7671001D2B0C /* SelectImageCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectImageCollectionViewCell.swift; sourceTree = "<group>"; };
+		BF016873282C78F7001D2B0C /* InfoView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InfoView.swift; sourceTree = "<group>"; };
+		BF016875282C78FC001D2B0C /* InfoTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InfoTextField.swift; sourceTree = "<group>"; };
 		BFA412B92826846E00EF31A6 /* iCrypto.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iCrypto.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BFA412BC2826846E00EF31A6 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		BFA412BE2826846E00EF31A6 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -73,7 +80,6 @@
 		BFA412CD2826847000EF31A6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		BFA412D92826863F00EF31A6 /* MainTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarController.swift; sourceTree = "<group>"; };
 		BFA412DD2826889700EF31A6 /* WalletTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalletTableViewController.swift; sourceTree = "<group>"; };
-		BFA412DF2826889E00EF31A6 /* SettingsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsTableViewController.swift; sourceTree = "<group>"; };
 		BFA412E1282689B100EF31A6 /* UIFont+.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIFont+.swift"; sourceTree = "<group>"; };
 		BFA412E3282689B900EF31A6 /* UIColor+.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIColor+.swift"; sourceTree = "<group>"; };
 		BFA412E5282689BE00EF31A6 /* UIStackView+.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIStackView+.swift"; sourceTree = "<group>"; };
@@ -140,6 +146,17 @@
 			path = Wallet;
 			sourceTree = "<group>";
 		};
+		BF01686E282C7605001D2B0C /* Settings */ = {
+			isa = PBXGroup;
+			children = (
+				BF016873282C78F7001D2B0C /* InfoView.swift */,
+				BF016875282C78FC001D2B0C /* InfoTextField.swift */,
+				BF01686F282C7624001D2B0C /* PersonImageStackView.swift */,
+				BF016871282C7671001D2B0C /* SelectImageCollectionViewCell.swift */,
+			);
+			path = Settings;
+			sourceTree = "<group>";
+		};
 		BFA412B02826846E00EF31A6 = {
 			isa = PBXGroup;
 			children = (
@@ -185,10 +202,10 @@
 				BFA412D92826863F00EF31A6 /* MainTabBarController.swift */,
 				BFA412F928268B7100EF31A6 /* HomeViewController.swift */,
 				BFA412DD2826889700EF31A6 /* WalletTableViewController.swift */,
-				BFA412DF2826889E00EF31A6 /* SettingsTableViewController.swift */,
 				BFA412FB28268BE700EF31A6 /* NewsTableViewController.swift */,
 				BFA4131B282803F300EF31A6 /* AddInvestmentsViewController.swift */,
 				BFA4132A282958B500EF31A6 /* CoinViewController.swift */,
+				BF01686C282C74E1001D2B0C /* SettingsViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -196,6 +213,7 @@
 		BFA412D4282685C600EF31A6 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				BF01686E282C7605001D2B0C /* Settings */,
 				BF016865282BC663001D2B0C /* Wallet */,
 				BFA4132C28299D7400EF31A6 /* CapitalizationStackView */,
 				BFA41321282813EF00EF31A6 /* CustomTextField */,
@@ -296,7 +314,6 @@
 			isa = PBXGroup;
 			children = (
 				BFA413102826C13B00EF31A6 /* CryptoLineChartView.swift */,
-				BF01685F282AE19F001D2B0C /* CryptoBarChartView.swift */,
 			);
 			path = Chart;
 			sourceTree = "<group>";
@@ -450,6 +467,7 @@
 			files = (
 				BFA412E2282689B100EF31A6 /* UIFont+.swift in Sources */,
 				BFA412DE2826889700EF31A6 /* WalletTableViewController.swift in Sources */,
+				BF016872282C7671001D2B0C /* SelectImageCollectionViewCell.swift in Sources */,
 				BFA412BD2826846E00EF31A6 /* AppDelegate.swift in Sources */,
 				BFA4130D2826B79700EF31A6 /* CoinModel.swift in Sources */,
 				BFA412DA2826863F00EF31A6 /* MainTabBarController.swift in Sources */,
@@ -458,6 +476,7 @@
 				BFA412FF28268C7F00EF31A6 /* NewsTableViewCell.swift in Sources */,
 				BFA4132B282958B500EF31A6 /* CoinViewController.swift in Sources */,
 				BFA41317282726BE00EF31A6 /* InvestmentsCollectionViewCell.swift in Sources */,
+				BF016876282C78FC001D2B0C /* InfoTextField.swift in Sources */,
 				BFA412C72826846E00EF31A6 /* iCrypto.xcdatamodeld in Sources */,
 				BF01686B282C439E001D2B0C /* Enums.swift in Sources */,
 				BF016868282BC680001D2B0C /* WalletView.swift in Sources */,
@@ -473,16 +492,17 @@
 				BFA412BF2826846E00EF31A6 /* SceneDelegate.swift in Sources */,
 				BFA41318282726BE00EF31A6 /* WelcomeStackView.swift in Sources */,
 				BFA413292828311200EF31A6 /* CoreDataManager.swift in Sources */,
+				BF01686D282C74E1001D2B0C /* SettingsViewController.swift in Sources */,
 				BFA4131C282803F300EF31A6 /* AddInvestmentsViewController.swift in Sources */,
-				BF016860282AE19F001D2B0C /* CryptoBarChartView.swift in Sources */,
 				BFA412FA28268B7100EF31A6 /* HomeViewController.swift in Sources */,
 				BFA4130628269A1F00EF31A6 /* String+.swift in Sources */,
 				BFA4131A2827FA3900EF31A6 /* UILabel+.swift in Sources */,
+				BF016874282C78F7001D2B0C /* InfoView.swift in Sources */,
 				BFA4130F2826BC0A00EF31A6 /* Double+.swift in Sources */,
 				BFA412FC28268BE700EF31A6 /* NewsTableViewController.swift in Sources */,
 				BFA412E8282689C300EF31A6 /* UIView+.swift in Sources */,
-				BFA412E02826889E00EF31A6 /* SettingsTableViewController.swift in Sources */,
 				BFA412E4282689B900EF31A6 /* UIColor+.swift in Sources */,
+				BF016870282C7624001D2B0C /* PersonImageStackView.swift in Sources */,
 				BFA413112826C13B00EF31A6 /* CryptoLineChartView.swift in Sources */,
 				BFA41302282696CD00EF31A6 /* NetworkingManager.swift in Sources */,
 			);
