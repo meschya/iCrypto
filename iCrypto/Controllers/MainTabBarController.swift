@@ -19,6 +19,7 @@ final class MainTabBarController: UITabBarController, NSFetchedResultsController
     }
     
     private var fetchResultController: NSFetchedResultsController<Wallet>!
+    private var profileFetchResultController: NSFetchedResultsController<Profile>!
     private let homeTVC = HomeViewController()
     private let walletTVC = WalletTableViewController()
     private let settingsVC = SettingsViewController()

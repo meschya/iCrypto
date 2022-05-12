@@ -1,6 +1,6 @@
 import UIKit
 
-class InvestTextField: UIStackView {
+final class InvestTextField: UIStackView {
     // MARK: - Properties
 
     // MARK: Private

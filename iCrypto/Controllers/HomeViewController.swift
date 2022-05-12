@@ -8,23 +8,24 @@ final class HomeViewController: UIViewController {
     
     var coins: [CoinModel] = [] {
         didSet {
-            self.cryptoTableView.reloadData()
-            self.headerView.coins = coins
+            cryptoTableView.reloadData()
+            headerView.coins = coins
         }
     }
     
     var wallets: [Wallet] = [] {
         didSet {
-            self.cryptoTableView.reloadData()
+            cryptoTableView.reloadData()
         }
     }
+    
+    var headerView = WelcomeStackView()
 
     // MARK: Private
-
+    
     private let refreshControl: UIRefreshControl = .init()
     private let panel: FloatingPanelController = .init()
     private let cryptoTableView: UITableView = .init()
-    private var headerView = WelcomeStackView()
     private let searchController: UISearchController = .init()
 
     // MARK: - Lifecycle
@@ -39,6 +40,7 @@ final class HomeViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         navigationController?.setNavigationBarHidden(true, animated: animated)
+        headerView.setUserInfo()
     }
     
     override func viewWillDisappear(_ animated: Bool) {

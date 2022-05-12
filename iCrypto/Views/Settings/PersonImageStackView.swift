@@ -22,7 +22,6 @@ final class PersonImageStackView: UIStackView {
         addSubviews()
         addSetups()
         addContraints()
-        //PersonImageStackView.image = UIImage(named: "1")!
     }
 
     @available(*, unavailable)
@@ -93,7 +92,6 @@ final class PersonImageStackView: UIStackView {
         personImageView.layer.cornerRadius = personImageView.frame.size.width / 2
         personImageView.clipsToBounds = true
         personImageView.contentMode = .scaleAspectFill
-       // personImageView.image = UIImage(named: "1")
     }
     
     private func addSelectCollectionViewSetupsUI() {

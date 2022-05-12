@@ -23,6 +23,13 @@ final class WelcomeStackView: UIStackView, NSFetchedResultsControllerDelegate {
             investmentCollectionView.reloadData()
         }
     }
+    private var profileFetchResultController: NSFetchedResultsController<Profile>!
+    private var profiles: [Profile] = [] {
+        didSet {
+            setUserInfo()
+            investmentCollectionView.reloadData()
+        }
+    }
     
     private let welcomeStackView: UIStackView = .init()
     private let welcomeLabel: UILabel = .init()
@@ -41,6 +48,7 @@ final class WelcomeStackView: UIStackView, NSFetchedResultsControllerDelegate {
         addSubviews()
         addContraints()
         addSetups()
+        profileCoreDataSetups()
         coreDataSetups()
     }
     
@@ -77,6 +85,33 @@ final class WelcomeStackView: UIStackView, NSFetchedResultsControllerDelegate {
                 try fetchResultController.performFetch()
                 if let fetchedObjects = fetchResultController.fetchedObjects {
                     invests = fetchedObjects
+                }
+            } catch {
+                print(error)
+            }
+        }
+    }
+    
+    // MARK: - CoreData
+
+    private func profileCoreDataSetups() {
+        let fetchRequest: NSFetchRequest<Profile> = Profile.fetchRequest()
+        let sortDescriptor = NSSortDescriptor(key: "name", ascending: false)
+        fetchRequest.sortDescriptors = [sortDescriptor]
+        if let appDelegate = UIApplication.shared.delegate as? AppDelegate {
+            let context = appDelegate.persistentContainer.viewContext
+            profileFetchResultController = NSFetchedResultsController(
+                fetchRequest: fetchRequest,
+                managedObjectContext: context,
+                sectionNameKeyPath: nil,
+                cacheName: nil
+            )
+            profileFetchResultController.delegate = self
+            do {
+                try profileFetchResultController.performFetch()
+                if let fetchedObjects = profileFetchResultController.fetchedObjects {
+                    profiles = fetchedObjects
+                    set(profiles[0].name ?? "Yegor", profiles[0].image ?? Data())
                 }
             } catch {
                 print(error)
@@ -138,9 +173,9 @@ final class WelcomeStackView: UIStackView, NSFetchedResultsControllerDelegate {
     
     // MARK: - API
     
-    func set(_ text: String, _ image: String) {
+    func set(_ text: String, _ image: Data) {
         welcomeLabel.text = "Hello, \(text)!"
-        personImageView.image = UIImage(named: image)
+        personImageView.image = UIImage(data: image)
     }
     
     private func setCount(_ count: Int) {
@@ -216,13 +251,11 @@ final class WelcomeStackView: UIStackView, NSFetchedResultsControllerDelegate {
     }
     
     private func addWelcomeLabelSetups() {
-        welcomeLabel.text = "Hello, Yegor!"
         welcomeLabel.font = .altone(15, .light)
         welcomeLabel.textColor = .gray
     }
     
     private func addPersonImageSetups() {
-        personImageView.image = UIImage(named: "6")
         personImageView.layer.cornerRadius = personImageView.frame.size.width / 2
         personImageView.clipsToBounds = true
         personImageView.contentMode = .scaleAspectFill
@@ -244,6 +277,12 @@ final class WelcomeStackView: UIStackView, NSFetchedResultsControllerDelegate {
     }
     
     // MARK: - Helpers
+    
+    // MARK: Public
+    
+    func setUserInfo() {
+        set(profiles[0].name ?? "Yegor", profiles[0].image ?? Data())
+    }
     
     // MARK: Private
     
