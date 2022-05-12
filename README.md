@@ -22,7 +22,7 @@ pod 'Alamofire', '~> 5.5'
 ```ruby
 pod 'FloatingPanel'
 ```
-``ruby
+```ruby
 pod 'Kingfisher', '~> 7.0'
 ```
 ```ruby
