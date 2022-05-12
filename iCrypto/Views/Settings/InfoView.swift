@@ -1,11 +1,14 @@
 import UIKit
+import CoreData
 
-final class InfoView: UIView {
+final class InfoView: UIView, NSFetchedResultsControllerDelegate {
     // MARK: - Properties
     
     // MARK: Private
 
-    //private var namegiver: Namegiver = .init()
+    private var fetchResultController: NSFetchedResultsController<Profile>!
+    private var profiles: [Profile] = []
+    private var profile: Profile = .init()
     private var personImage: UIImage = .init()
     private let mainStackView: UIStackView = .init()
     private let nameTextField: InfoTextField = .init()
@@ -21,11 +24,39 @@ final class InfoView: UIView {
         addSubviews()
         addSetups()
         addContraints()
+        coreDataSetups()
+        addInfo()
     }
 
     @available(*, unavailable)
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+    
+    // MARK: - CoreData
+
+    private func coreDataSetups() {
+        let fetchRequest: NSFetchRequest<Profile> = Profile.fetchRequest()
+        let sortDescriptor = NSSortDescriptor(key: "name", ascending: false)
+        fetchRequest.sortDescriptors = [sortDescriptor]
+        if let appDelegate = UIApplication.shared.delegate as? AppDelegate {
+            let context = appDelegate.persistentContainer.viewContext
+            fetchResultController = NSFetchedResultsController(
+                fetchRequest: fetchRequest,
+                managedObjectContext: context,
+                sectionNameKeyPath: nil,
+                cacheName: nil
+            )
+            fetchResultController.delegate = self
+            do {
+                try fetchResultController.performFetch()
+                if let fetchedObjects = fetchResultController.fetchedObjects {
+                    profiles = fetchedObjects
+                }
+            } catch {
+                print(error)
+            }
+        }
     }
     
     // MARK: - Constraints
@@ -67,9 +98,9 @@ final class InfoView: UIView {
     }
     
     private func addTextFieldsSetups() {
-        nameTextField.configurator("bb", "Name")
+        nameTextField.configurator("person.fill", "Name")
         nameTextField.isAutoCorrectionEnabled = false
-        phoneNumberTextField.configurator("phone", "Number phone", .phonePad)
+        phoneNumberTextField.configurator("phone.fill", "Number phone", .phonePad)
     }
     
     private func addSaveButtonSetups() {
@@ -93,7 +124,7 @@ final class InfoView: UIView {
         let doneBtn = UIBarButtonItem(barButtonSystemItem: .done, target: nil, action: #selector(doneButtonClick))
         doneBtn.tintColor = .systemOrange
         toolBar.setItems([doneBtn], animated: true)
-        dateTextField.date("date", toolbar: toolBar, inputView: datePicker)
+        dateTextField.date("calendar", toolbar: toolBar, inputView: datePicker)
         dateTextField.text = formatter(.medium).string(from: datePicker.date)
     }
     
@@ -123,11 +154,18 @@ final class InfoView: UIView {
         alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
     }
     
-    private func clearAllFields() {
-        personImage = UIImage(named: "1")!
-        nameTextField.text.removeAll()
-        phoneNumberTextField.text.removeAll()
-        dateTextField.text = formatter(.medium).string(from: Date())
+    private func addInfo() {
+        if profiles.count == 0 {
+            nameTextField.text = ""
+            phoneNumberTextField.text = ""
+        } else if profiles.count != 0 {
+            let dateFormatter = DateFormatter()
+            dateFormatter.dateFormat = "dd MMMM"
+            nameTextField.text = profiles[0].name ?? "Yegor"
+            phoneNumberTextField.text = profiles[0].phoneNumber ?? "+375298033970"
+            PersonImageStackView.image = UIImage(data: profiles[0].image!)!
+            dateTextField.text = formatter(.medium).string(from: profiles[0].date ?? Date())
+        }
     }
     
     // MARK: - Actions
@@ -140,18 +178,26 @@ final class InfoView: UIView {
     }
     
     @objc func saveNamegiver() {
-//        personImage = PersonImageStackView.image
-//        let date = formatter(.medium).date(from: dateTextField.text)!
-//        if isEmptyFields() == false {
-//            CoreDataManager.instance.saveNamegiver(namegiver,
-//                                                   nameTextField.text,
-//                                                   phoneNumberTextField.text,
-//                                                   date,
-//                                                   personImage,
-//                                                   Int16(Date.now.daysUntil(to: date)))
-//            clearAllFields()
-//        } else {
-//            print("Please fill in all fields!")
-//        }
+        personImage = PersonImageStackView.image
+        let date = formatter(.medium).date(from: dateTextField.text)!
+        if isEmptyFields() == false {
+            if profiles.count == 0 {
+                CoreDataManager.instance.saveProfile(profile,
+                                                     nameTextField.text,
+                                                     phoneNumberTextField.text,
+                                                     date,
+                                                     personImage)
+            } else if profiles.count != 0 {
+                profiles[0].name = nameTextField.text
+                profiles[0].phoneNumber = phoneNumberTextField.text
+                profiles[0].date = date
+                profiles[0].image = personImage.pngData()
+                if let appDelegate = (UIApplication.shared.delegate as? AppDelegate) {
+                    appDelegate.saveContext()
+                }
+            }
+        } else {
+            print("Please fill in all fields!")
+        }
     }
 }

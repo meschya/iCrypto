@@ -35,7 +35,7 @@ final class CoreDataManager {
     func saveProfile(_ profile: Profile, _ name: String, _ phoneNumber: String, _ date: Date, _ image: UIImage) {
         var profile = profile
         if let appDelegate = (UIApplication.shared.delegate as? AppDelegate) {
-            profile = profile(context: appDelegate.persistentContainer.viewContext)
+            profile = Profile(context: appDelegate.persistentContainer.viewContext)
             profile.name = name
             profile.phoneNumber = phoneNumber
             profile.date = date

@@ -4,7 +4,7 @@ final class SettingsViewController: UIViewController {
     // MARK: - Properties
 
     // MARK: Private
-
+    
     private let scrollView: UIScrollView = .init()
     private let mainStackView: UIStackView = .init()
     private let profileLabel: UILabel = .init()

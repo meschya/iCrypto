@@ -43,13 +43,13 @@ final class InfoTextField: UIView {
     // MARK: - API
     
     func configurator(_ image: String, _ placeholder: String, _ type: UIKeyboardType = .default) {
-        iconImageView.image = UIImage(named: image)
+        iconImageView.image = UIImage(systemName: image)
         infoTextField.placeholder = placeholder
         infoTextField.keyboardType = type
     }
     
     func date(_ image: String, toolbar: UIToolbar, inputView: UIView) {
-        iconImageView.image = UIImage(named: image)
+        iconImageView.image = UIImage(systemName: image)
         infoTextField.inputAccessoryView = toolbar
         infoTextField.inputView = inputView
     }
@@ -99,6 +99,7 @@ final class InfoTextField: UIView {
     }
 
     private func addInfoViewSetups() {
+        iconImageView.tintColor = .theme.accent
         backgroundColor = .theme.cellColor
         layer.cornerRadius = 10
         addShadow()
