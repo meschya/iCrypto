@@ -8,7 +8,7 @@ final class NewsTableViewController: UITableViewController {
     
     private var news: [NewsStory] = [] {
         didSet {
-            self.tableView.reloadData()
+            tableView.reloadData()
         }
     }
     

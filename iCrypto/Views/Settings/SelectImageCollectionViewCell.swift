@@ -15,7 +15,7 @@ final class SelectImageCollectionViewCell: UICollectionViewCell {
     
     override var bounds: CGRect {
             didSet {
-                self.layoutIfNeeded()
+                layoutIfNeeded()
             }
         }
     

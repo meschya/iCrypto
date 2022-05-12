@@ -32,7 +32,7 @@ final class SettingsViewController: UIViewController {
     
     private func addScrollViewConstraints() {
         scrollView.translatesAutoresizingMaskIntoConstraints = false
-        scrollView.topAnchor.constraint(equalTo: view.topAnchor, constant: 10).isActive = true
+        scrollView.topAnchor.constraint(equalTo: view.topAnchor, constant: 20).isActive = true
         scrollView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 10).isActive = true
         scrollView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -10).isActive = true
         scrollView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -10).isActive = true
@@ -40,11 +40,10 @@ final class SettingsViewController: UIViewController {
     
     private func addMainStackViewConstraints() {
         mainStackView.translatesAutoresizingMaskIntoConstraints = false
-        mainStackView.topAnchor.constraint(equalTo: scrollView.topAnchor, constant: 70).isActive = true
-        mainStackView.leadingAnchor.constraint(equalTo: scrollView.leadingAnchor).isActive = true
-        mainStackView.trailingAnchor.constraint(equalTo: scrollView.trailingAnchor).isActive = true
-        mainStackView.heightAnchor.constraint(equalToConstant: 535).isActive = true
+        mainStackView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 10).isActive = true
+        mainStackView.bottomAnchor.constraint(equalTo: scrollView.bottomAnchor, constant: -10).isActive = true
         mainStackView.widthAnchor.constraint(equalTo: scrollView.widthAnchor, multiplier: 1).isActive = true
+        mainStackView.heightAnchor.constraint(equalToConstant: 535).isActive = true
     }
     
     private func addPersonImageAndInfoHeightConstraints() {

@@ -50,11 +50,11 @@ final class WalletView: UIView {
     
     override func layoutSubviews() {
         super.layoutSubviews()
-        DispatchQueue.main.async {
-            self.addCoinImageViewSetups()
-            self.addBinanceImageViewSetups()
-            self.addKrakenImageViewSetups()
-            self.addBitfinexImageViewSetups()
+        DispatchQueue.main.async { [weak self] in
+            self?.addCoinImageViewSetups()
+            self?.addBinanceImageViewSetups()
+            self?.addKrakenImageViewSetups()
+            self?.addBitfinexImageViewSetups()
         }
     }
     

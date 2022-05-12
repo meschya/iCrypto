@@ -30,11 +30,11 @@ final class CapitalizationStackView: UIStackView {
     
     override func layoutSubviews() {
         super.layoutSubviews()
-        DispatchQueue.main.async {
-            self.currentPriceLabel.setLineSpacing(lineSpacing: 4.0)
-            self.capitalizationLabel.setLineSpacing(lineSpacing: 4.0)
-            self.rankLabel.setLineSpacing(lineSpacing: 4.0)
-            self.volumeLabel.setLineSpacing(lineSpacing: 4.0)
+        DispatchQueue.main.async { [weak self] in
+            self?.currentPriceLabel.setLineSpacing(lineSpacing: 4.0)
+            self?.capitalizationLabel.setLineSpacing(lineSpacing: 4.0)
+            self?.rankLabel.setLineSpacing(lineSpacing: 4.0)
+            self?.volumeLabel.setLineSpacing(lineSpacing: 4.0)
         }
     }
     

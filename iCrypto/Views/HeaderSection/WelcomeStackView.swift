@@ -61,8 +61,8 @@ final class WelcomeStackView: UIStackView, NSFetchedResultsControllerDelegate {
     
     override func layoutSubviews() {
         super.layoutSubviews()
-        DispatchQueue.main.async {
-            self.addPersonImageSetups()
+        DispatchQueue.main.async { [weak self] in
+            self?.addPersonImageSetups()
         }
     }
     
@@ -111,6 +111,7 @@ final class WelcomeStackView: UIStackView, NSFetchedResultsControllerDelegate {
                 try profileFetchResultController.performFetch()
                 if let fetchedObjects = profileFetchResultController.fetchedObjects {
                     profiles = fetchedObjects
+                    print(profiles)
                 }
             } catch {
                 print(error)
@@ -280,7 +281,11 @@ final class WelcomeStackView: UIStackView, NSFetchedResultsControllerDelegate {
     // MARK: Public
     
     func setUserInfo() {
+        if !profiles.isEmpty {
         set(profiles[0].name ?? "Yegor", profiles[0].image ?? Data())
+        } else {
+            set("my Friend", Data())
+        }
     }
     
     // MARK: Private
@@ -337,11 +342,11 @@ extension WelcomeStackView: UICollectionViewDelegate, UICollectionViewDataSource
                              coin.image,
                              changeColor ? .systemRed : .systemGreen,
                              invest.buyingPrice)
-                    cell.deleteHandler = {
-                        self.deleteCell(indexPath: indexPath)
+                    cell.deleteHandler = { [weak self] in
+                        self?.deleteCell(indexPath: indexPath)
                     }
-                    cell.editHandler = {
-                        self.editCell(indexPath: indexPath)
+                    cell.editHandler = { [weak self] in
+                        self?.editCell(indexPath: indexPath)
                     }
                 }
             }

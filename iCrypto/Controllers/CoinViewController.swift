@@ -87,6 +87,7 @@ final class CoinViewController: UIViewController {
         mainStackView.distribution = .fillProportionally
         mainStackView.alignment = .fill
         mainStackView.spacing = 20
+        scrollView.showsVerticalScrollIndicator = false
     }
     
     private func addChartSetups() {

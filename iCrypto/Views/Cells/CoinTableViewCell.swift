@@ -55,8 +55,8 @@ final class CoinTableViewCell: UITableViewCell {
     
     override func layoutSubviews() {
         super.layoutSubviews()
-        DispatchQueue.main.async {
-            self.addCoinImageViewSetups()
+        DispatchQueue.main.async { [weak self] in
+            self?.addCoinImageViewSetups()
         }
     }
     

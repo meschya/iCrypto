@@ -46,10 +46,10 @@ final class InvestmentsCollectionViewCell: UICollectionViewCell {
     
     override func layoutSubviews() {
         super.layoutSubviews()
-        DispatchQueue.main.async {
-            self.addCoinImageViewSetups()
-            self.profitLabel.setLineSpacing(lineSpacing: 4.0)
-            self.investmentLabel.setLineSpacing(lineSpacing: 4.0)
+        DispatchQueue.main.async { [weak self] in
+            self?.addCoinImageViewSetups()
+            self?.profitLabel.setLineSpacing(lineSpacing: 4.0)
+            self?.investmentLabel.setLineSpacing(lineSpacing: 4.0)
         }
     }
     

@@ -1,23 +1,24 @@
-import UIKit
 import CoreData
+import UIKit
 
 final class MainTabBarController: UITabBarController, NSFetchedResultsControllerDelegate {
     // MARK: - Properties
 
     // MARK: Private
+
     private var coins: [CoinModel] = [] {
         didSet {
-            self.walletTVC.coins = coins
-            self.homeTVC.coins = coins
+            walletTVC.coins = coins
+            homeTVC.coins = coins
         }
     }
-    
+
     private var wallets: [Wallet] = [] {
         didSet {
-            self.homeTVC.wallets = wallets
+            homeTVC.wallets = wallets
         }
     }
-    
+
     private var fetchResultController: NSFetchedResultsController<Wallet>!
     private var profileFetchResultController: NSFetchedResultsController<Profile>!
     private let homeTVC = HomeViewController()
@@ -33,7 +34,7 @@ final class MainTabBarController: UITabBarController, NSFetchedResultsController
         fetchCoins()
         coreDataSetups()
     }
-    
+
     // MARK: - CoreData
 
     private func coreDataSetups() {
@@ -59,9 +60,9 @@ final class MainTabBarController: UITabBarController, NSFetchedResultsController
             }
         }
     }
-    
+
     // MARK: - Networking
-    
+
     private func fetchCoins() {
         NetworkingManager.instance.getCoins { [weak self] result in
             self?.coins = result

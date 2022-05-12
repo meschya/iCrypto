@@ -40,8 +40,8 @@ final class AddInvestmentsViewController: UIViewController {
     
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
-        DispatchQueue.main.async {
-            self.coinTextField.setUnderLine()
+        DispatchQueue.main.async { [weak self] in
+            self?.coinTextField.setUnderLine()
         }
     }
     
