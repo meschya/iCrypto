@@ -68,7 +68,7 @@ final class WelcomeStackView: UIStackView, NSFetchedResultsControllerDelegate {
     
     // MARK: - CoreData
 
-    private func coreDataSetups() {
+    func coreDataSetups() {
         let fetchRequest: NSFetchRequest<Investment> = Investment.fetchRequest()
         let sortDescriptor = NSSortDescriptor(key: "coinSymbol", ascending: false)
         fetchRequest.sortDescriptors = [sortDescriptor]
@@ -111,7 +111,6 @@ final class WelcomeStackView: UIStackView, NSFetchedResultsControllerDelegate {
                 try profileFetchResultController.performFetch()
                 if let fetchedObjects = profileFetchResultController.fetchedObjects {
                     profiles = fetchedObjects
-                    set(profiles[0].name ?? "Yegor", profiles[0].image ?? Data())
                 }
             } catch {
                 print(error)

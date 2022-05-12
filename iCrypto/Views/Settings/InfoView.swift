@@ -6,7 +6,7 @@ final class InfoView: UIView, NSFetchedResultsControllerDelegate {
     
     // MARK: Private
 
-    private var fetchResultController: NSFetchedResultsController<Profile>!
+    private var profileFetchResultController: NSFetchedResultsController<Profile>!
     private var profiles: [Profile] = []
     private var profile: Profile = .init()
     private var personImage: UIImage = .init()
@@ -41,16 +41,16 @@ final class InfoView: UIView, NSFetchedResultsControllerDelegate {
         fetchRequest.sortDescriptors = [sortDescriptor]
         if let appDelegate = UIApplication.shared.delegate as? AppDelegate {
             let context = appDelegate.persistentContainer.viewContext
-            fetchResultController = NSFetchedResultsController(
+            profileFetchResultController = NSFetchedResultsController(
                 fetchRequest: fetchRequest,
                 managedObjectContext: context,
                 sectionNameKeyPath: nil,
                 cacheName: nil
             )
-            fetchResultController.delegate = self
+            profileFetchResultController.delegate = self
             do {
-                try fetchResultController.performFetch()
-                if let fetchedObjects = fetchResultController.fetchedObjects {
+                try profileFetchResultController.performFetch()
+                if let fetchedObjects = profileFetchResultController.fetchedObjects {
                     profiles = fetchedObjects
                 }
             } catch {
