@@ -1,6 +1,6 @@
 # iCrypto
 
-Implemented remote photo storage gallery with horizontal scrolling and paging
+This app was created to make it easy to monitor and invest in cryptocurrencies
 ## Technology
 
 ```ruby
