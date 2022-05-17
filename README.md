@@ -1,6 +1,6 @@
 # iCrypto
 
-This app was created to make it easy to monitor and invest in cryptocurrencies
+Implemented remote photo storage gallery with horizontal scrolling and paging
 ## Technology
 
 ```ruby
