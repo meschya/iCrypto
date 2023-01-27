@@ -1,7 +1,9 @@
 import Alamofire
 import Foundation
 
-final class NetworkingManager {
+protocol NetworkingManager
+
+final class NetworkManager {
     // MARK: - Instance
 
     static let instance = NetworkingManager()

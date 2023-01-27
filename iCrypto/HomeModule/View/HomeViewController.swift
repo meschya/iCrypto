@@ -100,7 +100,7 @@ final class HomeViewController: UIViewController {
     // MARK: Private
     
     @objc private func refresh() {
-        NetworkingManager.instance.getCoins { [weak self] result in
+        NetworkManager.instance.getCoins { [weak self] result in
             self?.coins = result
             self?.refreshControl.endRefreshing()
         }
