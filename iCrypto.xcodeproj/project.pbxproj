@@ -17,6 +17,9 @@
 		BF016872282C7671001D2B0C /* SelectImageCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF016871282C7671001D2B0C /* SelectImageCollectionViewCell.swift */; };
 		BF016874282C78F7001D2B0C /* InfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF016873282C78F7001D2B0C /* InfoView.swift */; };
 		BF016876282C78FC001D2B0C /* InfoTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF016875282C78FC001D2B0C /* InfoTextField.swift */; };
+		BF07EA122981DD7B00EEA105 /* MainPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF07EA112981DD7B00EEA105 /* MainPresenter.swift */; };
+		BF07EA142981E31400EEA105 /* ModuleBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF07EA132981E31400EEA105 /* ModuleBuilder.swift */; };
+		BF07EA1B2981E56900EEA105 /* HomePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF07EA1A2981E56900EEA105 /* HomePresenter.swift */; };
 		BFA412BD2826846E00EF31A6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFA412BC2826846E00EF31A6 /* AppDelegate.swift */; };
 		BFA412BF2826846E00EF31A6 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFA412BE2826846E00EF31A6 /* SceneDelegate.swift */; };
 		BFA412C72826846E00EF31A6 /* iCrypto.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = BFA412C52826846E00EF31A6 /* iCrypto.xcdatamodeld */; };
@@ -39,7 +42,7 @@
 		BFA412FA28268B7100EF31A6 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFA412F928268B7100EF31A6 /* HomeViewController.swift */; };
 		BFA412FC28268BE700EF31A6 /* NewsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFA412FB28268BE700EF31A6 /* NewsTableViewController.swift */; };
 		BFA412FF28268C7F00EF31A6 /* NewsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFA412FE28268C7F00EF31A6 /* NewsTableViewCell.swift */; };
-		BFA41302282696CD00EF31A6 /* NetworkingManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFA41301282696CD00EF31A6 /* NetworkingManager.swift */; };
+		BFA41302282696CD00EF31A6 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFA41301282696CD00EF31A6 /* NetworkManager.swift */; };
 		BFA41304282696F300EF31A6 /* NewsStory.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFA41303282696F300EF31A6 /* NewsStory.swift */; };
 		BFA4130628269A1F00EF31A6 /* String+.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFA4130528269A1F00EF31A6 /* String+.swift */; };
 		BFA4130828269A3400EF31A6 /* DateFormatter+.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFA4130728269A3400EF31A6 /* DateFormatter+.swift */; };
@@ -71,6 +74,9 @@
 		BF016871282C7671001D2B0C /* SelectImageCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectImageCollectionViewCell.swift; sourceTree = "<group>"; };
 		BF016873282C78F7001D2B0C /* InfoView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InfoView.swift; sourceTree = "<group>"; };
 		BF016875282C78FC001D2B0C /* InfoTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InfoTextField.swift; sourceTree = "<group>"; };
+		BF07EA112981DD7B00EEA105 /* MainPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainPresenter.swift; sourceTree = "<group>"; };
+		BF07EA132981E31400EEA105 /* ModuleBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModuleBuilder.swift; sourceTree = "<group>"; };
+		BF07EA1A2981E56900EEA105 /* HomePresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomePresenter.swift; sourceTree = "<group>"; };
 		BFA412B92826846E00EF31A6 /* iCrypto.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iCrypto.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BFA412BC2826846E00EF31A6 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		BFA412BE2826846E00EF31A6 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -95,7 +101,7 @@
 		BFA412F928268B7100EF31A6 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		BFA412FB28268BE700EF31A6 /* NewsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsTableViewController.swift; sourceTree = "<group>"; };
 		BFA412FE28268C7F00EF31A6 /* NewsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsTableViewCell.swift; sourceTree = "<group>"; };
-		BFA41301282696CD00EF31A6 /* NetworkingManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkingManager.swift; sourceTree = "<group>"; };
+		BFA41301282696CD00EF31A6 /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
 		BFA41303282696F300EF31A6 /* NewsStory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewsStory.swift; sourceTree = "<group>"; };
 		BFA4130528269A1F00EF31A6 /* String+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+.swift"; sourceTree = "<group>"; };
 		BFA4130728269A3400EF31A6 /* DateFormatter+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DateFormatter+.swift"; sourceTree = "<group>"; };
@@ -157,6 +163,81 @@
 			path = Settings;
 			sourceTree = "<group>";
 		};
+		BF07EA0D2981DC0000EEA105 /* MainModule */ = {
+			isa = PBXGroup;
+			children = (
+				BF07EA0F2981DCC100EEA105 /* Model */,
+				BF07EA0E2981DCBC00EEA105 /* View */,
+				BF07EA102981DCC500EEA105 /* Presenter */,
+			);
+			path = MainModule;
+			sourceTree = "<group>";
+		};
+		BF07EA0E2981DCBC00EEA105 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				BFA412D92826863F00EF31A6 /* MainTabBarController.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		BF07EA0F2981DCC100EEA105 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		BF07EA102981DCC500EEA105 /* Presenter */ = {
+			isa = PBXGroup;
+			children = (
+				BF07EA112981DD7B00EEA105 /* MainPresenter.swift */,
+			);
+			path = Presenter;
+			sourceTree = "<group>";
+		};
+		BF07EA152981E41F00EEA105 /* Builder */ = {
+			isa = PBXGroup;
+			children = (
+				BF07EA132981E31400EEA105 /* ModuleBuilder.swift */,
+			);
+			path = Builder;
+			sourceTree = "<group>";
+		};
+		BF07EA162981E53800EEA105 /* HomeModule */ = {
+			isa = PBXGroup;
+			children = (
+				BF07EA192981E55300EEA105 /* Model */,
+				BF07EA182981E55000EEA105 /* View */,
+				BF07EA172981E54700EEA105 /* Presenter */,
+			);
+			path = HomeModule;
+			sourceTree = "<group>";
+		};
+		BF07EA172981E54700EEA105 /* Presenter */ = {
+			isa = PBXGroup;
+			children = (
+				BF07EA1A2981E56900EEA105 /* HomePresenter.swift */,
+			);
+			path = Presenter;
+			sourceTree = "<group>";
+		};
+		BF07EA182981E55000EEA105 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				BFA412F928268B7100EF31A6 /* HomeViewController.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		BF07EA192981E55300EEA105 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				BFA4130C2826B79700EF31A6 /* CoinModel.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
 		BFA412B02826846E00EF31A6 = {
 			isa = PBXGroup;
 			children = (
@@ -178,6 +259,9 @@
 		BFA412BB2826846E00EF31A6 /* iCrypto */ = {
 			isa = PBXGroup;
 			children = (
+				BF07EA152981E41F00EEA105 /* Builder */,
+				BF07EA0D2981DC0000EEA105 /* MainModule */,
+				BF07EA162981E53800EEA105 /* HomeModule */,
 				BFA4131D282804C300EF31A6 /* Protocol */,
 				BFA41300282696C100EF31A6 /* Managers */,
 				BFA412D8282685E200EF31A6 /* Enums */,
@@ -199,8 +283,6 @@
 		BFA412D3282685C500EF31A6 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				BFA412D92826863F00EF31A6 /* MainTabBarController.swift */,
-				BFA412F928268B7100EF31A6 /* HomeViewController.swift */,
 				BFA412DD2826889700EF31A6 /* WalletTableViewController.swift */,
 				BFA412FB28268BE700EF31A6 /* NewsTableViewController.swift */,
 				BFA4131B282803F300EF31A6 /* AddInvestmentsViewController.swift */,
@@ -228,7 +310,6 @@
 			isa = PBXGroup;
 			children = (
 				BFA41303282696F300EF31A6 /* NewsStory.swift */,
-				BFA4130C2826B79700EF31A6 /* CoinModel.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -286,7 +367,7 @@
 		BFA41300282696C100EF31A6 /* Managers */ = {
 			isa = PBXGroup;
 			children = (
-				BFA41301282696CD00EF31A6 /* NetworkingManager.swift */,
+				BFA41301282696CD00EF31A6 /* NetworkManager.swift */,
 				BFA413282828311200EF31A6 /* CoreDataManager.swift */,
 			);
 			path = Managers;
@@ -469,12 +550,14 @@
 				BFA412DE2826889700EF31A6 /* WalletTableViewController.swift in Sources */,
 				BF016872282C7671001D2B0C /* SelectImageCollectionViewCell.swift in Sources */,
 				BFA412BD2826846E00EF31A6 /* AppDelegate.swift in Sources */,
+				BF07EA122981DD7B00EEA105 /* MainPresenter.swift in Sources */,
 				BFA4130D2826B79700EF31A6 /* CoinModel.swift in Sources */,
 				BFA412DA2826863F00EF31A6 /* MainTabBarController.swift in Sources */,
 				BFA4132E28299DA200EF31A6 /* CapitalizationStackView.swift in Sources */,
 				BF016862282B2D4B001D2B0C /* WalletStackView.swift in Sources */,
 				BFA412FF28268C7F00EF31A6 /* NewsTableViewCell.swift in Sources */,
 				BFA4132B282958B500EF31A6 /* CoinViewController.swift in Sources */,
+				BF07EA142981E31400EEA105 /* ModuleBuilder.swift in Sources */,
 				BFA41317282726BE00EF31A6 /* InvestmentsCollectionViewCell.swift in Sources */,
 				BF016876282C78FC001D2B0C /* InfoTextField.swift in Sources */,
 				BFA412C72826846E00EF31A6 /* iCrypto.xcdatamodeld in Sources */,
@@ -501,10 +584,11 @@
 				BFA4130F2826BC0A00EF31A6 /* Double+.swift in Sources */,
 				BFA412FC28268BE700EF31A6 /* NewsTableViewController.swift in Sources */,
 				BFA412E8282689C300EF31A6 /* UIView+.swift in Sources */,
+				BF07EA1B2981E56900EEA105 /* HomePresenter.swift in Sources */,
 				BFA412E4282689B900EF31A6 /* UIColor+.swift in Sources */,
 				BF016870282C7624001D2B0C /* PersonImageStackView.swift in Sources */,
 				BFA413112826C13B00EF31A6 /* CryptoLineChartView.swift in Sources */,
-				BFA41302282696CD00EF31A6 /* NetworkingManager.swift in Sources */,
+				BFA41302282696CD00EF31A6 /* NetworkManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -644,6 +728,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 6T4WDMW4NC;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = iCrypto/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -672,6 +757,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 6T4WDMW4NC;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = iCrypto/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;

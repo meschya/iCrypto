@@ -6,35 +6,24 @@ final class HomeViewController: UIViewController {
     
     // MARK: Public
     
-    var coins: [CoinModel] = [] {
-        didSet {
-            cryptoTableView.reloadData()
-            headerView.coins = coins
-        }
-    }
-    
-    var wallets: [Wallet] = [] {
-        didSet {
-            cryptoTableView.reloadData()
-        }
-    }
-    
+    var presenter: HomeViewPresenterProtocol?
     var headerView = WelcomeStackView()
-
+    
     // MARK: Private
     
     private let refreshControl: UIRefreshControl = .init()
     private let panel: FloatingPanelController = .init()
     private let cryptoTableView: UITableView = .init()
     private let searchController: UISearchController = .init()
-
+    
     // MARK: - Lifecycle
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         addSubviews()
         addSetups()
         refreshTable()
+        presenter?.fetchCoins()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -48,15 +37,15 @@ final class HomeViewController: UIViewController {
         super.viewWillDisappear(animated)
         navigationController?.setNavigationBarHidden(false, animated: animated)
     }
-
+    
     // MARK: - Setups
-
+    
     // MARK: Private
-
+    
     private func addSubviews() {
         view.addSubview(cryptoTableView)
     }
-
+    
     private func addSetups() {
         addCryptoTableViewSetups()
         setUpFloatingPanel()
@@ -71,13 +60,14 @@ final class HomeViewController: UIViewController {
         cryptoTableView.dataSource = self
         cryptoTableView.register(CoinTableViewCell.self, forCellReuseIdentifier: CoinTableViewCell.identifier)
     }
-
+    
     private func setUpFloatingPanel() {
         let vc = NewsTableViewController()
         panel.surfaceView.backgroundColor = .theme.cellColor
         panel.set(contentViewController: vc)
         panel.surfaceView.appearance.cornerRadius = 20
         panel.addPanel(toParent: self)
+        panel.move(to: .tip, animated: false)
     }
     
     // MARK: - Helpers
@@ -100,21 +90,27 @@ final class HomeViewController: UIViewController {
     // MARK: Private
     
     @objc private func refresh() {
-        NetworkManager.instance.getCoins { [weak self] result in
-            self?.coins = result
+        presenter?.refreshTable = { [weak self] in
             self?.refreshControl.endRefreshing()
         }
+        presenter?.refresh()
+    }
+}
+
+extension HomeViewController: HomeViewProtocol {
+    func success() {
+        cryptoTableView.reloadData()
     }
 }
 
 extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return coins.count
+        return presenter?.coins?.count ?? 0
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if let cell = tableView.dequeueReusableCell(withIdentifier: CoinTableViewCell.identifier, for: indexPath) as? CoinTableViewCell {
-            let coin = coins[indexPath.row]
+            guard let coin = presenter?.coins?[indexPath.row] else { return UITableViewCell() }
             let changeColor = (coin.priceChangePercentage24H ?? 0.0 < 0)
             cell.set(coin.image,
                      coin.name,
@@ -137,18 +133,20 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let coinVC = CoinViewController()
+        guard let coins = presenter?.coins else { return }
         coinVC.coin = coins[indexPath.row]
-        for wallet in wallets {
-            if coins[indexPath.row].symbol.uppercased() == wallet.coinSymbol?.uppercased() {
-                coinVC.walletButton.isHidden = true
-            }
-        }
+//        for wallet in wallets {
+//            if coins[indexPath.row].symbol.uppercased() == wallet.coinSymbol?.uppercased() {
+//                coinVC.walletButton.isHidden = true
+//            }
+//        }
         present(UINavigationController(rootViewController: coinVC), animated: true)
     }
 }
 
 extension HomeViewController: TransferActionsBetweenVCDelegate {
     func viewScreen(_ addInvestments: AddInvestmentsViewController) {
+        guard let coins = presenter?.coins else { return }
         if !coins.isEmpty {
             navigationController?.pushViewController(addInvestments, animated: true)
             addInvestments.coins = coins

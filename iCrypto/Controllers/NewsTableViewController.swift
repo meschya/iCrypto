@@ -23,7 +23,7 @@ final class NewsTableViewController: UITableViewController {
     // MARK: - Networking
     
     private func fetchNews() {
-        NetworkingManager.instance.getNews { [weak self] result in
+        NetworkManager.instance.getNews { [weak self] result in
             self?.news = result
         }
     }

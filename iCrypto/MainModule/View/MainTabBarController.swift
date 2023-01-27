@@ -3,25 +3,22 @@ import UIKit
 
 final class MainTabBarController: UITabBarController, NSFetchedResultsControllerDelegate {
     // MARK: - Properties
+    
+    // MARK: Public
+    
+    var presenter: MainViewPresenterProtocol?
 
     // MARK: Private
 
-    private var coins: [CoinModel] = [] {
-        didSet {
-            walletTVC.coins = coins
-            homeTVC.coins = coins
-        }
-    }
-
-    private var wallets: [Wallet] = [] {
-        didSet {
-            homeTVC.wallets = wallets
-        }
-    }
+//    private var wallets: [Wallet] = [] {
+//        didSet {
+//            homeTVC.wallets = wallets
+//        }
+//    }
 
     private var fetchResultController: NSFetchedResultsController<Wallet>!
     private var profileFetchResultController: NSFetchedResultsController<Profile>!
-    private let homeTVC = HomeViewController()
+    private let homeTVC = ModuleBuilder.createHomeModule()
     private let walletTVC = WalletTableViewController()
     private let settingsVC = SettingsViewController()
 
@@ -31,8 +28,8 @@ final class MainTabBarController: UITabBarController, NSFetchedResultsController
         super.viewDidLoad()
         addSetups()
         tabBar.backgroundColor = .theme.background
-        fetchCoins()
         coreDataSetups()
+        presenter?.fetchCoins()
     }
 
     // MARK: - CoreData
@@ -53,22 +50,14 @@ final class MainTabBarController: UITabBarController, NSFetchedResultsController
             do {
                 try fetchResultController.performFetch()
                 if let fetchedObjects = fetchResultController.fetchedObjects {
-                    wallets = fetchedObjects
+                   // wallets = fetchedObjects
                 }
             } catch {
                 print(error)
             }
         }
     }
-
-    // MARK: - Networking
-
-    private func fetchCoins() {
-        NetworkingManager.instance.getCoins { [weak self] result in
-            self?.coins = result
-        }
-    }
-
+    
     // MARK: - Setups
 
     // MARK: Private
@@ -91,5 +80,12 @@ final class MainTabBarController: UITabBarController, NSFetchedResultsController
         walletTVC.title = "Wallet"
         settingsVC.title = "Settings"
         tabBar.tintColor = .theme.accent
+    }
+}
+
+extension MainTabBarController: MainViewProtocol {
+    func success() {
+        walletTVC.coins = presenter?.coins ?? []
+      //  homeTVC.coins = presenter?.coins ?? []
     }
 }

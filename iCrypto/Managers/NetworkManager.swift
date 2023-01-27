@@ -1,12 +1,15 @@
 import Alamofire
 import Foundation
 
-protocol NetworkingManager
+protocol NetworkManagerProtocol {
+    func getNews(completion: @escaping (([NewsStory]) -> Void))
+    func getCoins(completion: @escaping (([CoinModel]) -> Void))
+}
 
-final class NetworkManager {
+final class NetworkManager: NetworkManagerProtocol {
     // MARK: - Instance
 
-    static let instance = NetworkingManager()
+    static let instance = NetworkManager()
 
     // MARK: - Enums
 
@@ -42,6 +45,4 @@ final class NetworkManager {
             }
         }
     }
-
-    private init() {}
 }

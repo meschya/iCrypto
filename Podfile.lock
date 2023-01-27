@@ -1,12 +1,12 @@
 PODS:
-  - Alamofire (5.5.0)
-  - Charts (4.0.2):
-    - Charts/Core (= 4.0.2)
-  - Charts/Core (4.0.2):
+  - Alamofire (5.6.4)
+  - Charts (4.1.0):
+    - Charts/Core (= 4.1.0)
+  - Charts/Core (4.1.0):
     - SwiftAlgorithms (~> 1.0)
   - Confetto (0.2.5)
-  - FloatingPanel (2.5.2)
-  - Kingfisher (7.1.2)
+  - FloatingPanel (2.5.5)
+  - Kingfisher (7.5.0)
   - SwiftAlgorithms (1.0.0)
 
 DEPENDENCIES:
@@ -26,13 +26,13 @@ SPEC REPOS:
     - SwiftAlgorithms
 
 SPEC CHECKSUMS:
-  Alamofire: 1c4fb5369c3fe93d2857c780d8bbe09f06f97e7c
-  Charts: cfa4e911e6dc289582c2fe011a0e87c03d96727f
+  Alamofire: 4e95d97098eacb88856099c4fc79b526a299e48c
+  Charts: 354f86803d11d9c35de280587fef50d1af063978
   Confetto: 6e2cbcdc252f7cff64040353e0371d792be77975
-  FloatingPanel: 935712d7a8076630135fbbd47f717700913efef9
-  Kingfisher: 44ed6a8504763f27bab46163adfac83f5deb240c
+  FloatingPanel: a27e7827e0f710fa6236fe2596dd1b5484cb4fc1
+  Kingfisher: b9c2a4a4af2990a768445c277359b27bde287d71
   SwiftAlgorithms: 38dda4731d19027fdeee1125f973111bf3386b53
 
 PODFILE CHECKSUM: 88db133f1cdfefa4d59147def7f269e4140a695d
 
-COCOAPODS: 1.11.2
+COCOAPODS: 1.11.3
