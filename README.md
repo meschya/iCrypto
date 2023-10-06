@@ -33,4 +33,3 @@ pod "Confetto"
 ```
 
 ![alt text](https://static.tildacdn.com/tild3865-3062-4131-b465-623066366433/Frame_1.png)
-![alt text](https://static.tildacdn.com/tild3737-3633-4264-b938-633763363233/Simulator_Screen_Rec.gif)
